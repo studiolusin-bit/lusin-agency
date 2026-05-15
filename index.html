@@ -605,10 +605,8 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
   <div class="about-grid">
     <div class="about-img" onclick="document.getElementById('about-upload').click()">
       <input type="file" class="upload-input" id="about-upload" accept="image/*" onchange="loadAbout(this)">
-      <div class="about-img-ph" id="about-ph">
-        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        <span data-nl="Foto uploaden" data-en="Upload photo">Foto uploaden</span>
-      </div>
+     <div class="about-img-ph" id="about-ph" style="display:none;"></div>
+<img id="about-img" src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/post%201%20introducing%20lusin.png" alt="Lucy Azatyan" style="width:100%;height:100%;object-fit:cover;display:block;position:absolute;top:0;left:0;">
       <img id="about-img" alt="Lucy Azatyan">
     </div>
     <div class="about-content">
