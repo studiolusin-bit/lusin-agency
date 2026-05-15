@@ -254,7 +254,22 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
   .services-grid, .includes-grid { grid-template-columns: 1fr; }
   h1 { font-size: 36px; }
 }
-</style>
+/* GALLERY */
+#gallery-section { background: var(--bg); padding: 90px 6vw; }
+.gallery-grid { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-start; margin-top: 3rem; }
+.gallery-item { flex: 0 0 auto; cursor: zoom-in; overflow: hidden; }
+.gallery-item img { display: block; max-width: 380px; max-height: 520px; width: auto; height: auto; object-fit: contain; transition: opacity 0.3s ease; }
+.gallery-item:hover img { opacity: 0.82; }
+.lightbox { display: none; position: fixed; inset: 0; background: rgba(10,8,6,0.94); z-index: 1000; align-items: center; justify-content: center; cursor: zoom-out; }
+.lightbox.active { display: flex; }
+.lightbox img { max-width: 92vw; max-height: 92vh; object-fit: contain; display: block; }
+.lightbox-close { position: fixed; top: 24px; right: 32px; color: #fff; font-size: 32px; cursor: pointer; line-height: 1; font-weight: 200; opacity: 0.6; transition: opacity 0.2s; }
+.lightbox-close:hover { opacity: 1; }
+.lightbox-nav { position: fixed; top: 50%; transform: translateY(-50%); color: #fff; font-size: 48px; cursor: pointer; font-weight: 200; opacity: 0.4; transition: opacity 0.2s; user-select: none; padding: 20px; }
+.lightbox-nav:hover { opacity: 1; }
+.lightbox-nav.prev { left: 16px; }
+.lightbox-nav.next { right: 16px; }
+@media (max-width: 600px) { .gallery-item img { max-width: 45vw; max-height: 60vw; } } </style>
 <script src='https://identity.netlify.com/v1/netlify-identity-widget.js'></script>
 </head>
 <body>
@@ -596,7 +611,61 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- GALLERY -->
+<section id="gallery-section">
+  <div class="container">
+    <p class="section-label fade">Ons werk</p>
+    <h2 class="fade">Geselecteerde <em>projecten</em></h2>
+  </div>
+  <div class="gallery-grid" id="galleryGrid">
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/DSC00070.jpg" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/dermea-151.jpg" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/Ek-14.jpg" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/20f74766-1067-496c-af8f-7e9db577fae5_rw_1920.jpg" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/A7402043%20copy.jpg" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/HOE%20WERKT%20ALL%20YOU%20CAN%20EAT%20BIJ%20YOSHI%20SUSHI-2%20copy.png" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/ek_portrait-27%20copy.jpg" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/365480-GEE_F01.jpg" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/DSC07877-Edit.jpg" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/dermea-73.jpg" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/22da15ff-deda-4e6f-b01b-623444417a60_rw_1920.jpg" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/Ek%20copy.jpg" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/IMG_3007%20copy.JPG" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/378319-ANTRA_F03.jpg" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/ek-12%20copy.jpg" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/011b8afa-8b9b-4587-8777-e9edf9c193bf_rw_1920.jpg" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/A7402157-2%20copy.jpg" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/dermea-18.JPG" alt="" loading="lazy"></div>
+   <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/dermea-18.JPG" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/Ek-23.jpg" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/382236-ORA-D_F04.jpg" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/23987429-aa0a-4002-b3bc-38bc2f3cdfbb_rw_1920.jpg" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/DSC02856.JPG" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/ek_december%20copy.jpg" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/44acef5c-8841-49be-ba3e-1ab358b3a6d4_rw_1920.jpg" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/ek_portrait-3%20copy.jpg" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/dermea-152.jpg" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/Ek-5%20copy.jpg" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/HOE%20WERKT%20ALL%20YOU%20CAN%20EAT%20BIJ%20YOSHI%20SUSHI-3%20copy.jpg" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/ddf61ad8-b90d-4294-a8d9-22d1b27601c9_rw_1920.jpg" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/ek_december-22%20copy.jpg" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/IMG_4680%20copy.JPG" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/A7402446%20copy.jpg" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/ek-14%20copy.jpg" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/DSC07914.jpg" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/ek_december-29%20copy.jpg" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/Ek-16%20copy.jpg" alt="" loading="lazy"></div>
+    <div class="gallery-item"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/fdcdd954-bd73-4b87-9043-572912ecbbae_rw_1920.jpg" alt="" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" id="lbClose">&#x2715;</span>
+  <span class="lightbox-nav prev" id="lbPrev">&#8249;</span>
+  <img id="lbImg" src="" alt="">
+  <span class="lightbox-nav next" id="lbNext">&#8250;</span>
+</div>
 <section id="contact" style="background:var(--white);text-align:center;">
   <div class="container">
     <p class="section-label fade" data-nl="Laten we samenwerken" data-en="Let's work together">Laten we samenwerken</p>
@@ -626,7 +695,20 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
   <span>&#169; 2026 Lusin Agency</span>
 </footer>
 
-<script>
+<script> const galleryImgs = Array.from(document.querySelectorAll('.gallery-item img'));
+const lb = document.getElementById('lightbox');
+const lbImg = document.getElementById('lbImg');
+let current = 0;
+function openLb(i) { current = i; lbImg.src = galleryImgs[i].src; lb.classList.add('active'); }
+function closeLb() { lb.classList.remove('active'); lbImg.src = ''; }
+function showNext() { current = (current + 1) % galleryImgs.length; lbImg.src = galleryImgs[current].src; }
+function showPrev() { current = (current - 1 + galleryImgs.length) % galleryImgs.length; lbImg.src = galleryImgs[current].src; }
+galleryImgs.forEach((img, i) => img.parentElement.addEventListener('click', () => openLb(i)));
+document.getElementById('lbClose').addEventListener('click', closeLb);
+document.getElementById('lbNext').addEventListener('click', e => { e.stopPropagation(); showNext(); });
+document.getElementById('lbPrev').addEventListener('click', e => { e.stopPropagation(); showPrev(); });
+lb.addEventListener('click', e => { if (e.target === lb || e.target === lbImg) closeLb(); });
+document.addEventListener('keydown', e => { if (!lb.classList.contains('active')) return; if (e.key === 'Escape') closeLb(); if (e.key === 'ArrowRight') showNext(); if (e.key === 'ArrowLeft') showPrev(); });
 function setLang(lang) {
   document.querySelectorAll(".lang-toggle button").forEach((b,i) => b.classList.toggle("active",(lang==="nl"&&i===0)||(lang==="en"&&i===1)));
   document.querySelectorAll("[data-nl]").forEach(el => { const t=el.getAttribute("data-"+lang); if(t) el.innerHTML=t; });
