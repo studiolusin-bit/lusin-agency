@@ -242,8 +242,8 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
   .packages-grid { grid-template-columns: 1fr; }
   
   .services-grid { display: grid !important; grid-template-columns: 1fr 1fr !important; align-items: stretch !important; }
-  .services-grid .service-item { display: flex !important; flex-direction: column !important; justify-content: flex-start !important; border-right: 0.5px solid var(--rule) !important; border-bottom: 0.5px solid var(--rule) !important; height: auto !important; }
-  .services-grid .service-item img { height: 140px !important; margin-top: auto !important; display: block !important; }
+  .service-item { display: grid !important; grid-template-rows: auto 1fr auto !important; border-right: 0.5px solid var(--rule) !important; border-bottom: 0.5px solid var(--rule) !important; height: 100% !important; }
+  .service-item img { height: 140px !important; object-fit: cover !important; align-self: end !important; margin-top: auto !important; display: block !important; }
   
   .includes-grid { grid-template-columns: 1fr 1fr; }
   .about-grid { grid-template-columns: 1fr; }
@@ -254,7 +254,7 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
 }
 
 @media (max-width: 600px) {
-  .services-grid { grid-template-columns: 1fr 1fr !important; align-items: stretch !important; }
+  .services-grid { display: grid !important; grid-template-columns: 1fr 1fr !important; align-items: stretch !important; }
   .service-item { display: flex !important; flex-direction: column !important; justify-content: space-between !important; height: 100% !important; }
   .service-item img { height: 140px !important; margin-top: auto !important; display: block !important; }
   .includes-grid { grid-template-columns: 1fr; }
