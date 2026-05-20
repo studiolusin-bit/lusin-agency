@@ -241,9 +241,9 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
   .hero-right { min-height: 55vw; }
   .packages-grid { grid-template-columns: 1fr; }
   
-  .services-grid { grid-template-columns: 1fr 1fr; align-items: stretch; }
-  .service-item { display: flex !important; flex-direction: column !important; justify-content: space-between !important; border-right: 0.5px solid var(--rule) !important; border-bottom: 0.5px solid var(--rule) !important; height: 100% !important; }
-  .service-item img { height: 140px !important; margin-top: auto !important; display: block !important; }
+  .services-grid { display: grid !important; grid-template-columns: 1fr 1fr !important; align-items: stretch !important; }
+  .services-grid .service-item { display: flex !important; flex-direction: column !important; justify-content: flex-start !important; border-right: 0.5px solid var(--rule) !important; border-bottom: 0.5px solid var(--rule) !important; height: auto !important; }
+  .services-grid .service-item img { height: 140px !important; margin-top: auto !important; display: block !important; }
   
   .includes-grid { grid-template-columns: 1fr 1fr; }
   .about-grid { grid-template-columns: 1fr; }
