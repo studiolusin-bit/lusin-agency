@@ -284,6 +284,36 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
   body { overflow-x: hidden; }
   [style*="grid-template-columns"]:not(.services-grid) { grid-template-columns: 1fr 1fr !important; }
 }
+/* PROCESS */
+#process { background: var(--dark); padding: 90px 6vw; }
+.process-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--warm); margin-bottom: 0.75rem; font-weight: 400; }
+.process-title { font-family: "Outfit", sans-serif; font-size: clamp(26px, 3vw, 38px); font-weight: 300; color: var(--white); margin-bottom: 3rem; letter-spacing: 0.03em; }
+.process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 0.5px solid rgba(255,255,255,0.1); }
+.process-step { padding: 2.5rem 1.75rem 2rem 0; border-right: 0.5px solid rgba(255,255,255,0.08); }
+.process-step:last-child { border-right: none; }
+.process-num { font-family: "Outfit", sans-serif; font-size: 48px; color: rgba(255,255,255,0.08); line-height: 1; margin-bottom: 1.25rem; font-weight: 200; }
+.process-step-title { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--warm); margin-bottom: 0.75rem; font-weight: 400; }
+.process-step-desc { font-size: 13px; color: rgba(255,255,255,0.45); font-weight: 300; line-height: 1.8; }
+@media (max-width: 768px) { .process-steps { grid-template-columns: 1fr 1fr; } .process-step { border-right: 0.5px solid rgba(255,255,255,0.08); padding-bottom: 2rem; } .process-step:nth-child(2) { border-right: none; } .process-step:nth-child(3) { border-top: 0.5px solid rgba(255,255,255,0.08); } .process-step:nth-child(4) { border-top: 0.5px solid rgba(255,255,255,0.08); border-right: none; } }
+
+/* PROOF VISUAL */
+#proof { background: var(--bg2); padding: 90px 6vw; }
+.proof-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 0; background: var(--rule); }
+.proof-stat { background: var(--white); padding: 3rem 2.5rem; border-right: 0.5px solid var(--rule); }
+.proof-stat:last-child { border-right: none; background: var(--dark); }
+.proof-number { font-family: "Outfit", sans-serif; font-size: 64px; font-weight: 200; line-height: 1; color: var(--warm); margin-bottom: 0.5rem; letter-spacing: 0.02em; }
+.proof-stat:last-child .proof-number { color: rgba(181,149,110,0.8); }
+.proof-desc { font-size: 13px; color: var(--mid); font-weight: 300; line-height: 1.7; max-width: 280px; }
+.proof-stat:last-child .proof-desc { color: rgba(255,255,255,0.5); }
+.proof-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm); margin-bottom: 1.5rem; font-weight: 400; }
+@media (max-width: 768px) { .proof-inner { grid-template-columns: 1fr; } .proof-stat { border-right: none; border-bottom: 0.5px solid var(--rule); } }
+
+/* INCLUDES FOLDED INTO PACKAGES */
+.pkg-includes { margin-top: 3rem; padding-top: 2rem; border-top: 0.5px solid var(--rule); }
+.pkg-includes-title { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm); margin-bottom: 1.25rem; font-weight: 400; }
+.pkg-includes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+.pkg-inc-item { font-size: 12px; color: var(--mid); font-weight: 300; padding-left: 1rem; position: relative; }
+.pkg-inc-item::before { content: ""; position: absolute; left: 0; top: 50%; width: 4px; height: 4px; border-radius: 50%; background: var(--warm); transform: translateY(-50%); }
 </style>
 
 <script src='https://identity.netlify.com/v1/netlify-identity-widget.js'></script>
@@ -374,7 +404,49 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
     <span>Fashion · Beauty · Lifestyle · Hospitality</span><span class="dot">·</span>
   </div>
 </div>
+<!-- PROCESS -->
+<section id="process">
+  <p class="process-label fade" data-nl="Hoe werkt het" data-en="How it works">Hoe werkt het</p>
+  <h2 class="process-title fade" data-nl="Van eerste contact tot live content." data-en="From first contact to live content.">Van eerste contact tot live content.</h2>
+  <div class="process-steps">
+    <div class="process-step fade">
+      <div class="process-num">01</div>
+      <div class="process-step-title" data-nl="Intake gesprek" data-en="Intake meeting">Intake gesprek</div>
+      <p class="process-step-desc" data-nl="Gratis en vrijblijvend. We kijken samen naar jouw merk, doelen en wat jouw bedrijf nodig heeft." data-en="Free and without obligation. We look together at your brand, goals and what your business needs.">Gratis en vrijblijvend. We kijken samen naar jouw merk, doelen en wat jouw bedrijf nodig heeft.</p>
+    </div>
+    <div class="process-step fade">
+      <div class="process-num">02</div>
+      <div class="process-step-title" data-nl="Shoot voorbereiding" data-en="Shoot preparation">Shoot voorbereiding</div>
+      <p class="process-step-desc" data-nl="Moodboard, shot list en tijdschema worden vooraf gedeeld. Zodat de dag zelf soepel verloopt." data-en="Moodboard, shot list and schedule are shared in advance so the day itself runs smoothly.">Moodboard, shot list en tijdschema worden vooraf gedeeld. Zodat de dag zelf soepel verloopt.</p>
+    </div>
+    <div class="process-step fade">
+      <div class="process-num">03</div>
+      <div class="process-step-title" data-nl="Content shoot" data-en="Content shoot">Content shoot</div>
+      <p class="process-step-desc" data-nl="Op locatie bij jouw bedrijf. Professioneel, efficiënt en prettig. Geen gedoe." data-en="On location at your business. Professional, efficient and pleasant. No hassle.">Op locatie bij jouw bedrijf. Professioneel, efficiënt en prettig. Geen gedoe.</p>
+    </div>
+    <div class="process-step fade">
+      <div class="process-num">04</div>
+      <div class="process-step-title" data-nl="Levering & planning" data-en="Delivery & planning">Levering & planning</div>
+      <p class="process-step-desc" data-nl="Content binnen 7 werkdagen. Daarna stellen we samen de posting kalender op voor de komende weken." data-en="Content within 7 working days. Then we set up the posting calendar together for the coming weeks.">Content binnen 7 werkdagen. Daarna stellen we samen de posting kalender op voor de komende weken.</p>
+    </div>
+  </div>
+</section>
 
+  <!-- PROOF -->
+<section id="proof">
+  <p class="section-label fade" data-nl="Waarom het werkt" data-en="Why it works">Waarom het werkt</p>
+  <div class="proof-inner">
+    <div class="proof-stat fade">
+      <div class="proof-number">7</div>
+      <p class="proof-desc" data-nl="Werkdagen. Content altijd geleverd binnen 7 werkdagen na goedkeuring. Geen weken wachten." data-en="Working days. Content always delivered within 7 working days after approval. No waiting weeks.">Werkdagen. Content altijd geleverd binnen 7 werkdagen na goedkeuring. Geen weken wachten.</p>
+    </div>
+    <div class="proof-stat fade">
+      <div class="proof-number">1</div>
+      <p class="proof-desc" data-nl="Shootdag. Eén dag op locatie levert een volledige maand aan content op. Efficiënt en voorspelbaar." data-en="Shoot day. One day on location produces a full month of content. Efficient and predictable.">Shootdag. Eén dag op locatie levert een volledige maand aan content op. Efficiënt en voorspelbaar.</p>
+    </div>
+  </div>
+</section>
+  
 <!-- SERVICES -->
 <section id="services">
   <div class="container">
