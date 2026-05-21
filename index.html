@@ -320,6 +320,18 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
   .lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.92); z-index:9999; align-items:center; justify-content:center; cursor:zoom-out; }
 .lightbox.open { display:flex; }
 .lightbox img { max-width:90vw; max-height:90vh; object-fit:contain; }
+
+@keyframes heroFade {
+  0%, 18% { opacity: 1; }
+  25%, 93% { opacity: 0; }
+  100% { opacity: 1; }
+}
+.hero-img-set { position:absolute; inset:0; display:grid; grid-template-columns:1fr 1fr; grid-template-rows:1fr 1fr 1fr; gap:6px; opacity:0; animation: heroFade 24s infinite; }
+.hero-img-set:nth-child(1) { animation-delay: 0s; }
+.hero-img-set:nth-child(2) { animation-delay: 8s; }
+.hero-img-set:nth-child(3) { animation-delay: 16s; }
+.hero-img-set div { overflow:hidden; }
+.hero-img-set img { width:100%; height:100%; object-fit:cover; display:block; }
 </style>
 
 <script src='https://identity.netlify.com/v1/netlify-identity-widget.js'></script>
@@ -396,16 +408,36 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
   </div>
   </div>
 
-  <div class="hero-right" style="display:flex;align-items:center;justify-content:center;padding:2rem;z-index:1;position:relative;flex:1;min-height:100vh;">
-    <div style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr 1fr;gap:6px;width:100%;height:70vh;">
-      <div style="overflow:hidden;"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/ek_portrait-27%20copy.jpg" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div style="overflow:hidden;"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/DSC07877-Edit.jpg" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div style="overflow:hidden;"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/dermea-151.jpg" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div style="overflow:hidden;"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/365480-GEE_F01.jpg" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div style="overflow:hidden;"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/Ek-14.jpg" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <div style="overflow:hidden;"><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/dermea-73.jpg" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-    </div>
+ <div class="hero-right" style="display:flex;flex:1;min-height:100vh;position:relative;overflow:hidden;">
+
+  <div class="hero-img-set">
+    <div><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/ek_portrait-27%20copy.jpg"></div>
+    <div><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/DSC07877-Edit.jpg"></div>
+    <div><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/dermea-151.jpg"></div>
+    <div><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/365480-GEE_F01.jpg"></div>
+    <div><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/Ek-14.jpg"></div>
+    <div><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/dermea-73.jpg"></div>
   </div>
+
+  <div class="hero-img-set">
+    <div><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/DSC00070.jpg"></div>
+    <div><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/IMG_3599.jpg"></div>
+    <div><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/Ek%20copy.jpg"></div>
+    <div><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/ek-12%20copy.jpg"></div>
+    <div><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/378319-ANTRA_F03.jpg"></div>
+    <div><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/DSC07877-Edit.jpg"></div>
+  </div>
+
+  <div class="hero-img-set">
+    <div><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/no1.jpg"></div>
+    <div><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/n02.jpg"></div>
+    <div><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/IMG_2854.jpg"></div>
+    <div><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/dermea-73.jpg"></div>
+    <div><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/ek_portrait-27%20copy.jpg"></div>
+    <div><img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/365480-GEE_F01.jpg"></div>
+  </div>
+
+</div>
 
 </section>
 
