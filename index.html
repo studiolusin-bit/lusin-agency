@@ -314,6 +314,8 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
 .pkg-includes-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
 .pkg-inc-item { font-size: 12px; color: var(--mid); font-weight: 300; padding-left: 1rem; position: relative; }
 .pkg-inc-item::before { content: ""; position: absolute; left: 0; top: 50%; width: 4px; height: 4px; border-radius: 50%; background: var(--warm); transform: translateY(-50%); }
+.collab-img { cursor:zoom-in; transition:transform 0.4s ease; }
+.collab-img.zoomed { transform:scale(1.05); cursor:zoom-out; }
 </style>
 
 <script src='https://identity.netlify.com/v1/netlify-identity-widget.js'></script>
@@ -518,14 +520,14 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
   <p class="fade" style="font-size:13px;color:rgba(255,255,255,0.35);margin-top:0.75rem;max-width:480px;line-height:1.8;font-weight:300;" data-nl="Een selectie van hoe beheerde pagina's eruitzien. Fotografie, editing en publicatie — volledig door Lusin Agency." data-en="A selection of what managed pages look like. Photography, editing and publication — fully by Lusin Agency.">Een selectie van hoe beheerde pagina's eruitzien. Fotografie, editing en publicatie — volledig door Lusin Agency.</p>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:900px;margin:3rem auto 0;">
     <div class="fade" style="position:relative;overflow:hidden;height:500px;">
-      <img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/feed-ek.jpg" alt="EK Beauty Clinic" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;filter:brightness(0.92);">
+      <img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/feed-ek.jpg" class="collab-img" onclick="this.classList.toggle('zoomed')" alt="EK Beauty Clinic" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;filter:brightness(0.92);">
       <div style="position:absolute;bottom:0;left:0;right:0;padding:2rem;background:linear-gradient(to top,rgba(21,18,16,0.9),transparent);">
         <p style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(181,149,110,0.8);margin-bottom:0.3rem;">EK Beauty Clinic</p>
         <p style="font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:0.1em;text-transform:uppercase;">Schoonheidskliniek · Den Haag</p>
       </div>
     </div>
     <div class="fade" style="position:relative;overflow:hidden;height:500px;">
-      <img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/feed-yoshi.jpeg" alt="Yoshi Sushi" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;filter:brightness(0.92);">
+      <img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/feed-yoshi.jpeg" class="collab-img" onclick="this.classList.toggle('zoomed')" alt="Yoshi Sushi" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;filter:brightness(0.92);">
       <div style="position:absolute;bottom:0;left:0;right:0;padding:2rem;background:linear-gradient(to top,rgba(21,18,16,0.9),transparent);">
         <p style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(181,149,110,0.8);margin-bottom:0.3rem;">Yoshi Sushi</p>
         <p style="font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:0.1em;text-transform:uppercase;">Restaurant · Gouda</p>
