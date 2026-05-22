@@ -68,7 +68,7 @@ nav {
   max-width: 680px;
   color: var(--dark);
 }
-.hero-right { display: none; }
+.hero-right { display: flex; }
 .hero-eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm); margin-bottom: 1.5rem; font-weight: 400; }
 h1 { font-family: "Outfit", sans-serif; font-size: clamp(32px, 4vw, 52px); font-weight: 300; line-height: 1.2; margin-bottom: 1.5rem; letter-spacing: 0.02em; }
 h1 em { font-style: normal; font-weight: 200; letter-spacing: 0.04em; }
@@ -410,6 +410,25 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
     <div class="hero-btns fade">
       <a href="#packages" class="btn btn-filled" data-nl="Bekijk pakketten" data-en="View packages">Bekijk pakketten</a>
     </div>
+  </div> <div class="hero-right" style="display:flex;flex:1;min-height:100vh;position:relative;overflow:hidden;align-items:center;justify-content:center;">
+    <svg viewBox="0 0 500 600" xmlns="http://www.w3.org/2000/svg" style="width:80%;max-width:480px;opacity:0.5;">
+      <circle cx="350" cy="150" r="120" fill="none" stroke="#B5956E" stroke-width="0.8" opacity="0.6">
+        <animateTransform attributeName="transform" type="rotate" from="0 350 150" to="360 350 150" dur="30s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="350" cy="150" r="80" fill="none" stroke="#B5956E" stroke-width="0.4" opacity="0.4">
+        <animateTransform attributeName="transform" type="rotate" from="360 350 150" to="0 350 150" dur="20s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="350" cy="150" r="200" fill="none" stroke="#C4A882" stroke-width="0.3" opacity="0.3"/>
+      <line x1="100" y1="0" x2="100" y2="600" stroke="#B5956E" stroke-width="0.5" opacity="0.3"/>
+      <line x1="200" y1="0" x2="200" y2="600" stroke="#B5956E" stroke-width="0.3" opacity="0.2"/>
+      <line x1="0" y1="200" x2="500" y2="200" stroke="#B5956E" stroke-width="0.5" opacity="0.3"/>
+      <line x1="0" y1="400" x2="500" y2="400" stroke="#B5956E" stroke-width="0.3" opacity="0.2"/>
+      <rect x="260" y="60" width="180" height="180" fill="none" stroke="#B5956E" stroke-width="0.6" opacity="0.4">
+        <animateTransform attributeName="transform" type="rotate" from="0 350 150" to="360 350 150" dur="40s" repeatCount="indefinite"/>
+      </rect>
+      <circle cx="150" cy="450" r="60" fill="none" stroke="#C4A882" stroke-width="0.5" opacity="0.35"/>
+      <circle cx="150" cy="450" r="30" fill="none" stroke="#B5956E" stroke-width="0.4" opacity="0.25"/>
+    </svg>
   </div>
 </section>
 
