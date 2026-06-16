@@ -61,26 +61,32 @@ nav {
   z-index: 0;
 }
 .hero-left {
-  position: relative; z-index: 1;
-  flex: 1;
+  position: relative; z-index: 2;
+  flex: 0 0 auto;
   display: flex; flex-direction: column; justify-content: center;
   padding: 60px 6vw;
-  max-width: 680px;
-  color: var(--dark);
+  max-width: 560px;
+  color: #fff;
 }
-.hero-right { display: flex; }
-.hero-eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm); margin-bottom: 1.5rem; font-weight: 400; }
+/* hero-right hidden — photo is now full-bleed bg */
+.hero-right { display: none !important; }
+.hero-overlay {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  /* desktop: darker left (text area) → transparent right */
+  background: linear-gradient(to right, rgba(14,10,8,0.72) 0%, rgba(14,10,8,0.42) 42%, rgba(14,10,8,0.0) 72%);
+}
+.hero-eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 1.5rem; font-weight: 400; }
 h1 { font-family: "Outfit", sans-serif; font-size: clamp(32px, 4vw, 52px); font-weight: 300; line-height: 1.2; margin-bottom: 1.5rem; letter-spacing: 0.02em; }
 h1 em { font-style: normal; font-weight: 200; letter-spacing: 0.04em; }
-.hero-sub { font-size: 15px; color: var(--mid); max-width: 460px; line-height: 1.8; margin-bottom: 2.5rem; font-weight: 300; }
+.hero-sub { font-size: 15px; color: rgba(255,255,255,0.8); max-width: 460px; line-height: 1.8; margin-bottom: 2.5rem; font-weight: 300; }
 .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-#hero h1 { color: var(--dark); }
+#hero h1 { color: #fff; }
 .btn { display: inline-block; padding: 13px 30px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; border: 1px solid var(--dark); color: var(--dark); background: transparent; cursor: pointer; transition: all 0.25s; font-family: "Space Grotesk", sans-serif; font-weight: 400; }
 .btn:hover { background: var(--dark); color: var(--white); }
-#hero .btn { border-color: var(--dark); color: var(--dark); }
-#hero .btn:hover { background: var(--dark); color: white; border-color: var(--dark); }
-#hero .btn-filled { background: var(--dark); color: white; border-color: var(--dark); }
-#hero .btn-filled:hover { background: #333; }
+#hero .btn { border-color: rgba(255,255,255,0.75); color: #fff; }
+#hero .btn:hover { background: rgba(255,255,255,0.15); color: #fff; border-color: rgba(255,255,255,0.75); }
+#hero .btn-filled { background: rgba(255,255,255,0.18); color: #fff; border-color: rgba(255,255,255,0.75); }
+#hero .btn-filled:hover { background: rgba(255,255,255,0.32); border-color: #fff; }
 .btn-filled { background: var(--dark); color: var(--white); }
 .btn-filled:hover { background: #333; border-color: #333; }
 
@@ -238,10 +244,10 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
 @media (max-width: 960px) {
   .nav-links { display: none; }
   .nav-menu-btn { display: block; }
-  #hero { flex-direction: column; align-items: stretch; min-height: unset; padding-top: 64px; }
-  .hero-left { max-width: 100%; min-height: unset; padding: 40px 6vw 28px; }
-  .hero-right { display: block !important; flex: unset !important; min-height: 72vw !important; width: 100%; }
-  .hero-gradient-overlay { display: none; }
+  #hero { min-height: 100svh; align-items: flex-end; }
+  .hero-left { max-width: 100%; padding: 0 6vw 56px; }
+  /* Mobile overlay: uniform dark so text pops everywhere */
+  .hero-overlay { background: rgba(14,10,8,0.48) !important; }
   .packages-grid { grid-template-columns: 1fr; }
   
   /* MOBIELE REPARATIE: Blokken onder elkaar voor perfecte uitlijning */
@@ -339,15 +345,7 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
   100% { transform: scale(1.06) translateX(-2%); }
 }
 @keyframes lucyFadeIn { from { opacity:0; transform:scale(1.03); } to { opacity:1; transform:scale(1); } }
-/* Hero gradient overlay - blends image into background on desktop */
-.hero-gradient-overlay {
-  position: absolute;
-  left: 0; top: 0; bottom: 0;
-  width: 22%;
-  background: linear-gradient(to right, #EDE5D8 0%, rgba(237,229,216,0.6) 50%, transparent 100%);
-  z-index: 1;
-  pointer-events: none;
-}
+/* hero-gradient-overlay removed */
 </style>
 
 <script src='https://identity.netlify.com/v1/netlify-identity-widget.js'></script>
@@ -409,9 +407,12 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
 </a>
 
 <!-- HERO -->
-<section id="hero" style="position:relative;min-height:70vh;display:flex;align-items:center;overflow:hidden;">
-  <div style="position:absolute;inset:0;z-index:0;background:linear-gradient(135deg,#EDE5D8,#E8DFD0,#F0EBE3,#E2D9CC);background-size:400% 400%;animation:gradientShift 12s ease infinite;"></div>
-  <div class="hero-left" style="position:relative;z-index:2;">
+<section id="hero" style="position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;">
+  <!-- Full-bleed background photo -->
+  <img src="images/hero-lucy.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;z-index:0;animation:lucyFadeIn 1.6s cubic-bezier(0.4,0,0.2,1) 0.4s both;"/>
+  <!-- Overlay: dark left → transparent right (desktop), uniform dark (mobile via CSS) -->
+  <div class="hero-overlay"></div>
+  <div class="hero-left">
     <p class="hero-eyebrow fade">Fashion &nbsp;·&nbsp; Beauty &nbsp;·&nbsp; Lifestyle &nbsp;·&nbsp; Hospitality</p>
     <h1 class="fade">
       <span data-nl="Eén shootdag." data-en="We create a month of content" style="font-weight:200">Eén shootdag.</span><br>
@@ -421,9 +422,6 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
     <div class="hero-btns fade">
       <a href="#packages" class="btn btn-filled" data-nl="Bekijk pakketten" data-en="View packages">Bekijk pakketten</a>
     </div>
-  </div> <div class="hero-right" style="flex:1;min-height:100vh;position:relative;overflow:hidden;">
-    <div class="hero-gradient-overlay"></div>
-    <img src="images/hero-lucy.jpg" alt="Lusin Agency" style="width:100%;height:100%;object-fit:cover;object-position:center top;animation:lucyFadeIn 1.6s cubic-bezier(0.4,0,0.2,1) 0.4s both;"/>
   </div>
 </section>
 
