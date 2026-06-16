@@ -337,6 +337,7 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
   0% { transform: scale(1) translateX(0); }
   100% { transform: scale(1.06) translateX(-2%); }
 }
+@keyframes lucyFadeIn { from { opacity:0; transform:scale(1.03); } to { opacity:1; transform:scale(1); } }
 </style>
 
 <script src='https://identity.netlify.com/v1/netlify-identity-widget.js'></script>
@@ -411,7 +412,7 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
       <a href="#packages" class="btn btn-filled" data-nl="Bekijk pakketten" data-en="View packages">Bekijk pakketten</a>
     </div>
   </div> <div class="hero-right" style="display:flex;flex:1;min-height:100vh;position:relative;overflow:hidden;">
-    <img src="images/hero-lucy.jpg" alt="Lusin Agency" style="width:100%;height:100%;object-fit:cover;object-position:center top;opacity:0;animation:lucyFadeIn 1.6s cubic-bezier(0.4,0,0.2,1) 0.4s forwards;"/>
+    <img src="images/hero-lucy.jpg" alt="Lusin Agency" style="width:100%;height:100%;object-fit:cover;object-position:center top;animation:lucyFadeIn 1.6s cubic-bezier(0.4,0,0.2,1) 0.4s both;"/>
   </div>
 </section>
 
