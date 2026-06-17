@@ -74,16 +74,16 @@ nav {
   overflow: hidden;
   background-color: #EDE8DF;
 }
-/* Dramatic seam fade: starts early, wide sweep, photo left edge fully hidden */
+/* Seam fade: starts just before the photo edge, wide enough to fully hide the line */
 .hero-fade-overlay {
   position: absolute;
   top: 0; bottom: 0;
-  left: 22%;
-  width: 42%;
+  left: 34%;
+  width: 28%;
   background: linear-gradient(to right,
     #EDE8DF 0%,
-    #EDE8DF 20%,
-    rgba(237,232,223,0.85) 50%,
+    #EDE8DF 15%,
+    rgba(237,232,223,0.6) 55%,
     rgba(237,232,223,0) 100%
   );
   z-index: 3;
