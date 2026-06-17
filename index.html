@@ -62,19 +62,19 @@ nav {
 }
 .hero-left {
   position: relative; z-index: 2;
-  flex: 0 0 auto;
+  flex: 0 0 44%;
   display: flex; flex-direction: column; justify-content: center;
-  padding: 60px 6vw;
-  max-width: 560px;
+  padding: 80px 5vw 80px 6vw;
+  background: linear-gradient(160deg, #1e1812 0%, #231b14 70%, #1a130e 100%);
   color: #fff;
 }
-/* hero-right hidden — photo is now full-bleed bg */
-.hero-right { display: none !important; }
-.hero-overlay {
-  position: absolute; inset: 0; z-index: 1; pointer-events: none;
-  /* desktop: darker left (text area) → transparent right */
-  background: linear-gradient(to right, rgba(14,10,8,0.72) 0%, rgba(14,10,8,0.42) 42%, rgba(14,10,8,0.0) 72%);
+.hero-right-photo {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
 }
+.hero-right { display: none !important; }
+.hero-overlay { display: none; }
 .hero-eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 1.5rem; font-weight: 400; }
 h1 { font-family: "Outfit", sans-serif; font-size: clamp(32px, 4vw, 52px); font-weight: 300; line-height: 1.2; margin-bottom: 1.5rem; letter-spacing: 0.02em; }
 h1 em { font-style: normal; font-weight: 200; letter-spacing: 0.04em; }
@@ -244,10 +244,9 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
 @media (max-width: 960px) {
   .nav-links { display: none; }
   .nav-menu-btn { display: block; }
-  #hero { min-height: 100svh; align-items: flex-end; }
-  .hero-left { max-width: 100%; padding: 0 6vw 56px; }
-  /* Mobile overlay: uniform dark so text pops everywhere */
-  .hero-overlay { background: rgba(14,10,8,0.48) !important; }
+  #hero { flex-direction: column; min-height: 100svh; }
+  .hero-left { flex: 0 0 auto; padding: 56px 6vw 40px; }
+  .hero-right-photo { flex: 1; min-height: 65vw; }
   .packages-grid { grid-template-columns: 1fr; }
   
   /* MOBIELE REPARATIE: Blokken onder elkaar voor perfecte uitlijning */
@@ -407,11 +406,7 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
 </a>
 
 <!-- HERO -->
-<section id="hero" style="position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;">
-  <!-- Full-bleed background photo -->
-  <img src="images/hero-lucy.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%;z-index:0;animation:lucyFadeIn 1.6s cubic-bezier(0.4,0,0.2,1) 0.4s both;"/>
-  <!-- Overlay: dark left → transparent right (desktop), uniform dark (mobile via CSS) -->
-  <div class="hero-overlay"></div>
+<section id="hero" style="position:relative;min-height:100vh;display:flex;overflow:hidden;">
   <div class="hero-left">
     <p class="hero-eyebrow fade">Fashion &nbsp;·&nbsp; Beauty &nbsp;·&nbsp; Lifestyle &nbsp;·&nbsp; Hospitality</p>
     <h1 class="fade">
@@ -422,6 +417,9 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
     <div class="hero-btns fade">
       <a href="#packages" class="btn btn-filled" data-nl="Bekijk pakketten" data-en="View packages">Bekijk pakketten</a>
     </div>
+  </div>
+  <div class="hero-right-photo">
+    <img src="images/hero-lucy.jpg" alt="Lusin Agency" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;animation:lucyFadeIn 1.6s cubic-bezier(0.4,0,0.2,1) 0.4s both;"/>
   </div>
 </section>
 
