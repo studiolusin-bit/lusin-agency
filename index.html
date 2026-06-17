@@ -63,7 +63,7 @@ nav {
 .hero-fade-overlay {
   position: absolute; left: 0; top: 0; bottom: 0;
   width: 62%;
-  background: linear-gradient(to right, #1a1410 0%, #1a1410 38%, rgba(26,20,16,0.55) 65%, rgba(26,20,16,0) 100%);
+  background: linear-gradient(to right, #EDE8DF 0%, #EDE8DF 38%, rgba(237,232,223,0.6) 65%, rgba(237,232,223,0) 100%);
   z-index: 1;
   pointer-events: none;
 }
@@ -73,7 +73,7 @@ nav {
   display: flex; flex-direction: column; justify-content: center;
   padding: 80px 5vw 80px 6vw;
   background: transparent;
-  color: #fff;
+  color: var(--dark);
 }
 .hero-right-photo {
   flex: 1;
@@ -82,18 +82,18 @@ nav {
 }
 .hero-right { display: none !important; }
 .hero-overlay { display: none; }
-.hero-eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 1.5rem; font-weight: 400; }
+.hero-eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm); margin-bottom: 1.5rem; font-weight: 400; }
 h1 { font-family: "Outfit", sans-serif; font-size: clamp(32px, 4vw, 52px); font-weight: 300; line-height: 1.2; margin-bottom: 1.5rem; letter-spacing: 0.02em; }
 h1 em { font-style: normal; font-weight: 200; letter-spacing: 0.04em; }
-.hero-sub { font-size: 15px; color: rgba(255,255,255,0.8); max-width: 460px; line-height: 1.8; margin-bottom: 2.5rem; font-weight: 300; }
+.hero-sub { font-size: 15px; color: var(--mid); max-width: 460px; line-height: 1.8; margin-bottom: 2.5rem; font-weight: 300; }
 .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
-#hero h1 { color: #fff; }
+#hero h1 { color: var(--dark); }
 .btn { display: inline-block; padding: 13px 30px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; border: 1px solid var(--dark); color: var(--dark); background: transparent; cursor: pointer; transition: all 0.25s; font-family: "Space Grotesk", sans-serif; font-weight: 400; }
 .btn:hover { background: var(--dark); color: var(--white); }
-#hero .btn { border-color: rgba(255,255,255,0.75); color: #fff; }
-#hero .btn:hover { background: rgba(255,255,255,0.15); color: #fff; border-color: rgba(255,255,255,0.75); }
-#hero .btn-filled { background: rgba(255,255,255,0.18); color: #fff; border-color: rgba(255,255,255,0.75); }
-#hero .btn-filled:hover { background: rgba(255,255,255,0.32); border-color: #fff; }
+#hero .btn { border-color: var(--dark); color: var(--dark); }
+#hero .btn:hover { background: var(--dark); color: white; border-color: var(--dark); }
+#hero .btn-filled { background: var(--dark); color: white; border-color: var(--dark); }
+#hero .btn-filled:hover { background: #333; }
 .btn-filled { background: var(--dark); color: var(--white); }
 .btn-filled:hover { background: #333; border-color: #333; }
 
@@ -413,7 +413,7 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
 </a>
 
 <!-- HERO -->
-<section id="hero" style="position:relative;min-height:100vh;display:flex;overflow:hidden;background:#1a1410;">
+<section id="hero" style="position:relative;min-height:100vh;display:flex;overflow:hidden;background:#EDE8DF;">
   <!-- gradient fades from dark left → transparent, bleeds over photo edge -->
   <div class="hero-fade-overlay"></div>
   <div class="hero-left">
