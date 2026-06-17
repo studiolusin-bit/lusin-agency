@@ -74,24 +74,18 @@ nav {
   overflow: hidden;
   background-color: #EDE8DF;
 }
-/* Seam blender: covers the join between left panel and photo */
+/* Dramatic seam fade: starts early, wide sweep, photo left edge fully hidden */
 .hero-fade-overlay {
   position: absolute;
   top: 0; bottom: 0;
-  /* sits right at the join: starts 38% from left, spans 18% total */
-  left: 36%;
-  width: 20%;
-  background: linear-gradient(to right, #EDE8DF 0%, rgba(237,232,223,0) 100%);
-  z-index: 3;
-  pointer-events: none;
-}
-/* Seam blender: gradient fade exactly at the cream→photo border */
-.hero-fade-overlay {
-  position: absolute;
-  top: 0; bottom: 0;
-  left: 38%;
-  width: 18%;
-  background: linear-gradient(to right, #EDE8DF 0%, rgba(237,232,223,0) 100%);
+  left: 22%;
+  width: 42%;
+  background: linear-gradient(to right,
+    #EDE8DF 0%,
+    #EDE8DF 20%,
+    rgba(237,232,223,0.85) 50%,
+    rgba(237,232,223,0) 100%
+  );
   z-index: 3;
   pointer-events: none;
 }
