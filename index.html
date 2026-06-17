@@ -61,25 +61,29 @@ nav {
   z-index: 0;
 }
 .hero-fade-overlay {
-  position: absolute; left: 0; top: 0; bottom: 0;
-  width: 78%;
-  background: linear-gradient(to right, #EDE8DF 0%, #EDE8DF 28%, rgba(237,232,223,0.85) 48%, rgba(237,232,223,0.4) 68%, rgba(237,232,223,0) 100%);
+  position: absolute; inset: 0;
   z-index: 1;
   pointer-events: none;
+  /* cream left → fully transparent at 70% — smooth, no line */
+  background: linear-gradient(to right,
+    #EDE8DF 0%,
+    #EDE8DF 22%,
+    rgba(237,232,223,0.92) 38%,
+    rgba(237,232,223,0.65) 52%,
+    rgba(237,232,223,0.2) 65%,
+    rgba(237,232,223,0) 75%
+  );
 }
 .hero-left {
   position: relative; z-index: 2;
-  flex: 0 0 44%;
+  flex: 0 0 auto;
+  max-width: 520px;
   display: flex; flex-direction: column; justify-content: center;
   padding: 80px 5vw 80px 6vw;
   background: transparent;
   color: var(--dark);
 }
-.hero-right-photo {
-  flex: 1;
-  position: relative;
-  overflow: hidden;
-}
+.hero-right-photo { display: none; }
 .hero-right { display: none !important; }
 .hero-overlay { display: none; }
 .hero-eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm); margin-bottom: 1.5rem; font-weight: 400; }
@@ -251,9 +255,17 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
 @media (max-width: 960px) {
   .nav-links { display: none; }
   .nav-menu-btn { display: block; }
-  #hero { flex-direction: column; min-height: 100svh; }
-  .hero-left { flex: 0 0 auto; padding: 56px 6vw 40px; }
-  .hero-right-photo { flex: 1; min-height: 65vw; }
+  #hero { min-height: 100svh; align-items: flex-end; }
+  .hero-left { max-width: 100%; padding: 0 6vw 52px; }
+  /* mobile: photo bg shows Lucy, overlay fades from bottom */
+  .hero-fade-overlay {
+    background: linear-gradient(to top,
+      rgba(237,232,223,0.96) 0%,
+      rgba(237,232,223,0.75) 35%,
+      rgba(237,232,223,0.2) 60%,
+      rgba(237,232,223,0) 100%
+    ) !important;
+  }
   .packages-grid { grid-template-columns: 1fr; }
   
   /* MOBIELE REPARATIE: Blokken onder elkaar voor perfecte uitlijning */
@@ -413,8 +425,10 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
 </a>
 
 <!-- HERO -->
-<section id="hero" style="position:relative;min-height:100vh;display:flex;overflow:hidden;background:#EDE8DF;">
-  <!-- gradient fades from dark left → transparent, bleeds over photo edge -->
+<section id="hero" style="position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;">
+  <!-- Photo: full-bleed background, no split, no line -->
+  <img class="hero-bg-photo" src="images/hero-lucy.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:62% 15%;z-index:0;animation:lucyFadeIn 1.6s cubic-bezier(0.4,0,0.2,1) 0.4s both;"/>
+  <!-- Cream gradient: fades from left (solid) into photo — NO hard line -->
   <div class="hero-fade-overlay"></div>
   <div class="hero-left">
     <p class="hero-eyebrow fade">Fashion &nbsp;·&nbsp; Beauty &nbsp;·&nbsp; Lifestyle &nbsp;·&nbsp; Hospitality</p>
@@ -426,9 +440,6 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
     <div class="hero-btns fade">
       <a href="#packages" class="btn btn-filled" data-nl="Bekijk pakketten" data-en="View packages">Bekijk pakketten</a>
     </div>
-  </div>
-  <div class="hero-right-photo">
-    <img src="images/hero-lucy.jpg" alt="Lusin Agency" style="width:100%;height:100%;object-fit:cover;object-position:center 15%;animation:lucyFadeIn 1.6s cubic-bezier(0.4,0,0.2,1) 0.4s both;"/>
   </div>
 </section>
 
