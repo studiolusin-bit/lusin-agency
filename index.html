@@ -60,12 +60,19 @@ nav {
   background: linear-gradient(135deg, #F0EBE3 0%, #E8E0D5 50%, #EDE5D8 100%);
   z-index: 0;
 }
+.hero-fade-overlay {
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 62%;
+  background: linear-gradient(to right, #1a1410 0%, #1a1410 38%, rgba(26,20,16,0.55) 65%, rgba(26,20,16,0) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
 .hero-left {
   position: relative; z-index: 2;
   flex: 0 0 44%;
   display: flex; flex-direction: column; justify-content: center;
   padding: 80px 5vw 80px 6vw;
-  background: linear-gradient(160deg, #1e1812 0%, #231b14 70%, #1a130e 100%);
+  background: transparent;
   color: #fff;
 }
 .hero-right-photo {
@@ -406,7 +413,9 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
 </a>
 
 <!-- HERO -->
-<section id="hero" style="position:relative;min-height:100vh;display:flex;overflow:hidden;">
+<section id="hero" style="position:relative;min-height:100vh;display:flex;overflow:hidden;background:#1a1410;">
+  <!-- gradient fades from dark left → transparent, bleeds over photo edge -->
+  <div class="hero-fade-overlay"></div>
   <div class="hero-left">
     <p class="hero-eyebrow fade">Fashion &nbsp;·&nbsp; Beauty &nbsp;·&nbsp; Lifestyle &nbsp;·&nbsp; Hospitality</p>
     <h1 class="fade">
