@@ -902,6 +902,16 @@ function loadCell(input,i) {
   r.readAsDataURL(input.files[0]);
 }
 function toggleFaq(el) { el.closest(".faq-item").classList.toggle("open"); }
+// Mobile hero: use real window.innerHeight to fix iOS Safari viewport
+function fixMobileHero() {
+  if (window.innerWidth <= 960) {
+    var hero = document.getElementById('hero');
+    if (hero) hero.style.height = window.innerHeight + 'px';
+  }
+}
+fixMobileHero();
+window.addEventListener('resize', fixMobileHero);
+
 const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");obs.unobserve(e.target);}}),{threshold:0.08});
 document.querySelectorAll(".fade").forEach(el=>obs.observe(el));
 </script>
