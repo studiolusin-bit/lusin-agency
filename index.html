@@ -267,7 +267,7 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
   .lang-toggle button { color: rgba(255,255,255,0.5); }
   .lang-toggle button.active { color: #fff; border-bottom-color: #fff; }
   /* MOBILE: photo as full background, dark overlay, text on top */
-  #hero { flex-direction: column; height: 100dvh; min-height: 100dvh; position: relative; background: #1a1410 !important; overflow: hidden; padding-top: 0 !important; }
+  #hero { flex-direction: column; height: 100dvh !important; min-height: 0 !important; position: relative; background: #1a1410 !important; overflow: hidden; padding-top: 0 !important; }
   .hero-right-photo {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
     z-index: 0;
@@ -286,16 +286,6 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
     display: flex; flex-direction: column; justify-content: flex-end;
   }
   .hero-fade-overlay { display: none; }
-  .hero-mobile-top-fade {
-    position: absolute; top: 0; left: 0; right: 0; height: 130px;
-    background: linear-gradient(to bottom, #EDE8DF 0%, rgba(237,232,223,0) 100%);
-    z-index: 5; pointer-events: none;
-  }
-  .hero-mobile-bottom-fade {
-    position: absolute; bottom: 0; left: 0; right: 0; height: 100px;
-    background: linear-gradient(to top, #EDE8DF 0%, rgba(237,232,223,0) 100%);
-    z-index: 5; pointer-events: none;
-  }
   /* Text colors → white on dark background */
   #hero h1, #hero h1 span { color: #fff !important; }
   #hero .hero-sub { color: rgba(255,255,255,0.8) !important; }
@@ -906,11 +896,15 @@ function toggleFaq(el) { el.closest(".faq-item").classList.toggle("open"); }
 function fixMobileHero() {
   if (window.innerWidth <= 960) {
     var hero = document.getElementById('hero');
-    if (hero) hero.style.height = window.innerHeight + 'px';
+    if (hero) {
+      hero.style.height = window.innerHeight + 'px';
+      hero.style.minHeight = window.innerHeight + 'px';
+    }
   }
 }
-fixMobileHero();
+window.addEventListener('load', fixMobileHero);
 window.addEventListener('resize', fixMobileHero);
+fixMobileHero();
 
 const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");obs.unobserve(e.target);}}),{threshold:0.08});
 document.querySelectorAll(".fade").forEach(el=>obs.observe(el));
