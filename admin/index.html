@@ -476,7 +476,7 @@ async function uploadImg(ev, editKey, fp, prefix) {
     cache[fp].content = injectImg(cache[fp].content, editKey, newSrc);
     dirty[fp] = cache[fp].content;
     // Auto-sync feed/split images to cases overview card
-    const syncMap = {'ys-split':'cases-ys-img','ek-split':'cases-ek-img'};
+    const syncMap = {'ys-split':'cases-ys-img','ek-split':'cases-ek-img','dm-hero':'cases-dm-img','sb-split':'cases-sb-img'};
     if (syncMap[editKey]) {
       const casesFp = 'cases.html';
       if (!cache[casesFp]) await ghGet(casesFp);

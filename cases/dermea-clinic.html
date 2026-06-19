@@ -146,22 +146,24 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
 }
 .photo-row .photo-cell:hover img { transform: scale(1.05); }
 
-/* PHOTO GRID — 6 images, Pinterest layout */
+/* PHOTO GRID — Pinterest masonry, no cropping */
 .photo-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  columns: 3;
   gap: 4px;
   margin: 4px 0;
 }
 .pg-cell {
-  overflow: hidden; aspect-ratio: 4/5; background: var(--bg2);
+  break-inside: avoid;
+  margin-bottom: 4px;
+  background: var(--bg2);
+  overflow: hidden;
 }
-.pg-cell.wide { grid-column: span 2; aspect-ratio: 8/5; }
+.pg-cell.wide { break-inside: avoid; }
 .pg-cell img {
-  width: 100%; height: 100%; object-fit: cover; display: block;
+  width: 100%; height: auto; display: block;
   transition: transform 0.7s ease;
 }
-.pg-cell:hover img { transform: scale(1.04); }
+.pg-cell:hover img { transform: scale(1.02); }
 .pg-cell img[src=""] { display: none; }
 
 /* SMALL TEXT BLOCK */
@@ -340,11 +342,11 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
 
 <!-- PHOTO GRID — 6 photos Pinterest style -->
 <div class="photo-grid">
-  <div class="pg-cell wide"><img src="../images/dermea-17.JPG" alt="Derméa Clinic" data-edit="dm-p1"></div>
+  <div class="pg-cell"><img src="../images/dermea-17.JPG" alt="Derméa Clinic" data-edit="dm-p1"></div>
   <div class="pg-cell"><img src="../images/dermea-67.jpg" alt="Derméa Clinic" data-edit="dm-p2"></div>
   <div class="pg-cell"><img src="../images/dermea-74.jpg" alt="Derméa Clinic" data-edit="dm-p3"></div>
-  <div class="pg-cell wide"><img src="../images/dermea-41.jpg" alt="Derméa Clinic" data-edit="dm-p4"></div>
-  <div class="pg-cell wide"><img src="../images/dermea-135.jpg" alt="Derméa Clinic" data-edit="dm-p5"></div>
+  <div class="pg-cell"><img src="../images/dermea-41.jpg" alt="Derméa Clinic" data-edit="dm-p4"></div>
+  <div class="pg-cell"><img src="../images/dermea-135.jpg" alt="Derméa Clinic" data-edit="dm-p5"></div>
   <div class="pg-cell"><img src="../images/dermea-156.jpg" alt="Derméa Clinic" data-edit="dm-p6"></div>
 </div>
 
