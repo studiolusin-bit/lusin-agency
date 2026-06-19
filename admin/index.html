@@ -388,9 +388,15 @@ async function renderCasesOverview() {
   fields += F(fp,'cases-sub','Ondertitel',true,extract(h,'cases-sub'));
   // Find all case cards: cases-XXX-tag and cases-XXX-desc
   const caseKeys = [...new Set(markers.map(m => m.key.match(/^cases-([\w-]+)-(tag|desc)$/)?.[1]).filter(Boolean))];
+  // Map slug to image edit key
+  const imgKeyMap = {'ys':'cases-ys-img','ek':'cases-ek-img','dm':'cases-dm-img','sb':'cases-sb-img'};
   caseKeys.forEach(slug => {
     const name = slug.replace(/-/g,' ').replace(/\b\w/g,c=>c.toUpperCase());
     fields += `<div class="sh">${name} kaart</div>`;
+    // Card image
+    const imgKey = imgKeyMap[slug] || `cases-${slug}-img`;
+    const imgSrc = (h.match(new RegExp(`data-edit="${imgKey}"[^>]*src="([^"]*)"`))||h.match(new RegExp(`src="([^"]*)"[^>]*data-edit="${imgKey}"`)))?.[1] || '';
+    fields += I(fp, imgKey, 'Foto op kaart', imgSrc, '');
     fields += F(fp,`cases-${slug}-tag`,'Tag',false,extract(h,`cases-${slug}-tag`).replace(/&middot;/g,'·'));
     fields += F(fp,`cases-${slug}-desc`,'Beschrijving',true,extract(h,`cases-${slug}-desc`));
   });
