@@ -141,14 +141,18 @@ function doLogin() {
   if (pwd !== PWD) { document.getElementById('login-err').textContent = 'Onjuist wachtwoord.'; return; }
   if (!tok)        { document.getElementById('login-err').textContent = 'Voer een GitHub token in.'; return; }
   token = tok;
-  sessionStorage.setItem('lusin_token', tok);
+  localStorage.setItem('lusin_token', tok)
+  localStorage.setItem('lusin_auth', '1');
   document.getElementById('login-screen').style.display = 'none';
   document.getElementById('dashboard').style.display = 'block';
   switchTab('home');
 }
-function doLogout() { sessionStorage.removeItem('lusin_token'); location.reload(); }
+function doLogout() { localStorage.removeItem('lusin_token')
+  localStorage.removeItem('lusin_auth'); location.reload(); }
 window.addEventListener('load', () => {
-  const saved = sessionStorage.getItem('lusin_token');
+  const storedToken = localStorage.getItem('lusin_token');
+  if (storedToken) document.getElementById('token-input').value = storedToken;
+  const saved = localStorage.getItem('lusin_token');
   if (saved) { token = saved; document.getElementById('login-screen').style.display = 'none'; document.getElementById('dashboard').style.display = 'block'; switchTab('home'); }
 });
 
