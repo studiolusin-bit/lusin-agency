@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lusin — Beheer</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #F5F1EB; --bg2: #EDE7DE; --white: #FDFBF8;
+  --dark: #1A1A1A; --mid: #555; --light: #999;
+  --rule: #D8CFBF; --warm: #B5956E;
+  --green: #3d9a5c; --red: #c0392b;
+}
+body { font-family: "Space Grotesk", sans-serif; background: var(--bg); color: var(--dark); font-size: 14px; min-height: 100vh; }
+#login-screen { min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+.login-box { background: var(--white); border: 0.5px solid var(--rule); padding: 3rem 2.5rem; width: 100%; max-width: 420px; }
+.login-logo { font-family: "Outfit", sans-serif; font-size: 1.4rem; font-weight: 200; letter-spacing: 0.1em; text-transform: uppercase; }
+.login-logo em { font-style: normal; color: var(--warm); }
+.login-sub { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--light); margin-top: 0.2rem; margin-bottom: 2.5rem; }
+.field-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--warm); margin-bottom: 0.4rem; margin-top: 1.25rem; display: block; }
+input[type="password"], input[type="text"], textarea { width: 100%; padding: 0.7rem 0.85rem; border: 0.5px solid var(--rule); background: var(--bg); font-family: "Space Grotesk", sans-serif; font-size: 13px; color: var(--dark); outline: none; transition: border-color 0.2s; }
+input:focus, textarea:focus { border-color: var(--warm); }
+textarea { resize: vertical; min-height: 90px; line-height: 1.65; }
+.btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 0.75rem 1.5rem; margin-top: 1.5rem; border: 0.5px solid var(--dark); background: var(--dark); color: var(--white); font-family: "Space Grotesk", sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
+.btn:hover { background: #333; }
+.hint { font-size: 11px; color: var(--light); margin-top: 0.4rem; line-height: 1.5; }
+.hint a { color: var(--warm); text-decoration: none; }
+.hint a:hover { text-decoration: underline; }
+.err-msg { font-size: 12px; color: var(--red); margin-top: 0.5rem; min-height: 1.2em; }
+#dashboard { display: none; min-height: 100vh; }
+.topbar { position: fixed; top: 0; left: 0; right: 0; z-index: 200; height: 56px; background: var(--white); border-bottom: 0.5px solid var(--rule); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; }
+.topbar-logo { font-family: "Outfit", sans-serif; font-size: 1rem; font-weight: 200; letter-spacing: 0.12em; text-transform: uppercase; }
+.topbar-logo em { font-style: normal; color: var(--warm); }
+.topbar-right { display: flex; align-items: center; gap: 1rem; }
+.connected-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+.conn-text { font-size: 11px; color: var(--light); }
+.logout-link { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--light); cursor: pointer; background: none; border: none; font-family: inherit; }
+.logout-link:hover { color: var(--dark); }
+.admin-layout { display: grid; grid-template-columns: 210px 1fr; margin-top: 56px; min-height: calc(100vh - 56px); }
+.sidebar { background: var(--white); border-right: 0.5px solid var(--rule); padding: 1.75rem 0; position: sticky; top: 56px; height: calc(100vh - 56px); overflow-y: auto; }
+.sidebar-group-label { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--light); padding: 0 1.4rem; margin-bottom: 0.35rem; }
+.sidebar-link { display: flex; align-items: center; gap: 0.6rem; padding: 0.65rem 1.4rem; font-size: 13px; color: var(--mid); cursor: pointer; border-left: 2px solid transparent; transition: all 0.18s; text-decoration: none; user-select: none; }
+.sidebar-link:hover { color: var(--dark); background: var(--bg); }
+.sidebar-link.active { color: var(--dark); border-left-color: var(--warm); background: var(--bg); font-weight: 500; }
+.sidebar-divider { border: none; border-top: 0.5px solid var(--rule); margin: 1rem 0; }
+.main { padding: 2.5rem 3rem 8rem; max-width: 780px; }
+.page-h1 { font-family: "Outfit", sans-serif; font-size: 1.75rem; font-weight: 200; letter-spacing: -0.01em; margin-bottom: 0.2rem; }
+.page-sub { font-size: 12px; color: var(--light); margin-bottom: 2.5rem; }
+.section-heading { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm); margin-top: 2.25rem; margin-bottom: 0.85rem; padding-bottom: 0.5rem; border-bottom: 0.5px solid var(--rule); }
+.field-group { margin-bottom: 1.1rem; }
+.field-group label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); display: block; margin-bottom: 0.4rem; }
+.two-col { display: grid; grid-template-columns: 1fr 2fr; gap: 0.9rem; }
+.img-field { margin-bottom: 1.25rem; }
+.img-field > label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); display: block; margin-bottom: 0.5rem; }
+.img-preview { width: 100%; height: 170px; object-fit: cover; border: 0.5px solid var(--rule); display: block; background: var(--bg2); }
+.img-preview.placeholder { display: flex; align-items: center; justify-content: center; color: var(--light); font-size: 11px; letter-spacing: .08em; }
+.img-actions { display: flex; align-items: center; gap: 0.75rem; margin-top: 0.5rem; }
+.file-label { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 1rem; border: 0.5px solid var(--rule); background: var(--bg); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; transition: background 0.18s; white-space: nowrap; }
+.file-label:hover { background: var(--bg2); }
+.file-label input[type="file"] { display: none; }
+.upload-status { font-size: 11px; color: var(--light); }
+.publish-bar { position: fixed; bottom: 0; left: 210px; right: 0; z-index: 100; background: var(--dark); padding: 0.85rem 2.5rem; display: flex; align-items: center; justify-content: space-between; }
+.publish-status { font-size: 11px; color: rgba(255,255,255,0.4); }
+.publish-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.6rem 1.75rem; background: var(--warm); border: none; color: white; font-family: "Space Grotesk", sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
+.publish-btn:hover:not(:disabled) { background: #a3845e; }
+.publish-btn:disabled { background: #555; cursor: not-allowed; opacity: 0.7; }
+.toast { position: fixed; top: 68px; right: 1.5rem; z-index: 999; padding: 0.7rem 1.2rem; font-size: 12px; color: white; transform: translateX(130%); transition: transform 0.3s ease; }
+.toast.visible { transform: translateX(0); }
+.toast.ok { background: var(--green); }
+.toast.fail { background: var(--red); }
+.loading-msg { padding: 3rem; color: var(--light); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; }
+@media (max-width: 700px) { .admin-layout { grid-template-columns: 1fr; } .sidebar { position: static; height: auto; } .main { padding: 1.5rem 1.25rem 7rem; } .publish-bar { left: 0; } .two-col { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-logo">Lusin <em>Agency</em></div>
+    <div class="login-sub">Beheer paneel</div>
+    <label class="field-label">Wachtwoord</label>
+    <input type="password" id="pwd-input" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
+    <label class="field-label">GitHub Token</label>
+    <input type="password" id="token-input" placeholder="github_pat_..." onkeydown="if(event.key==='Enter')doLogin()">
+    <p class="hint">
+      Nodig om wijzigingen te publiceren. Wordt alleen opgeslagen voor deze browsersessie.<br>
+      <a href="https://github.com/settings/tokens/new?scopes=repo&description=LusinAdmin" target="_blank">Nieuw token aanmaken (repo-toegang) &rarr;</a>
+    </p>
+    <div class="err-msg" id="login-err"></div>
+    <button class="btn" onclick="doLogin()">Inloggen</button>
+  </div>
+</div>
+
+<div id="dashboard">
+  <div class="topbar">
+    <div class="topbar-logo">Lusin <em>Admin</em></div>
+    <div class="topbar-right">
+      <div class="connected-dot"></div>
+      <span class="conn-text">Verbonden met GitHub</span>
+      <button class="logout-link" onclick="doLogout()">Uitloggen</button>
+    </div>
+  </div>
+  <div class="admin-layout">
+    <div class="sidebar">
+      <div class="sidebar-group-label">Pagina&apos;s</div>
+      <div class="sidebar-link active" id="tab-home" onclick="switchTab('home')">&#127968; Home</div>
+      <div class="sidebar-link" id="tab-yoshi" onclick="switchTab('yoshi')">&#127843; Yoshi Sushi</div>
+      <div class="sidebar-link" id="tab-cases" onclick="switchTab('cases')">&#128193; Cases overzicht</div>
+      <hr class="sidebar-divider">
+      <div class="sidebar-group-label">Links</div>
+      <a class="sidebar-link" href="https://lusinagency.nl" target="_blank">&#8599; Bekijk site</a>
+      <a class="sidebar-link" href="https://lusinagency.nl/cases" target="_blank">&#8599; Cases</a>
+      <a class="sidebar-link" href="https://lusinagency.nl/cases/yoshi-sushi" target="_blank">&#8599; Yoshi Sushi</a>
+    </div>
+    <div class="main" id="main-area">
+      <div class="loading-msg">Laden&hellip;</div>
+    </div>
+  </div>
+  <div class="publish-bar">
+    <span class="publish-status" id="pub-status">Geen wijzigingen</span>
+    <button class="publish-btn" id="pub-btn" disabled onclick="doPublish()">Publiceren op site</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const REPO = 'studiolusin-bit/lusin-agency';
+const API  = 'https://api.github.com/repos/' + REPO + '/contents/';
+const PWD  = 'lusin2026';
+let token = '';
+let fileCache = {};
+let pendingChanges = {};
+
+function doLogin() {
+  const pwd = document.getElementById('pwd-input').value;
+  const tok = document.getElementById('token-input').value.trim();
+  if (pwd !== PWD) { document.getElementById('login-err').textContent = 'Onjuist wachtwoord.'; return; }
+  if (!tok)        { document.getElementById('login-err').textContent = 'Voer een GitHub token in.'; return; }
+  token = tok;
+  sessionStorage.setItem('lusin_token', tok);
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('dashboard').style.display = 'block';
+  switchTab('home');
+}
+function doLogout() { sessionStorage.removeItem('lusin_token'); location.reload(); }
+window.addEventListener('load', () => {
+  const saved = sessionStorage.getItem('lusin_token');
+  if (saved) { token = saved; document.getElementById('login-screen').style.display = 'none'; document.getElementById('dashboard').style.display = 'block'; switchTab('home'); }
+});
+
+async function ghGet(path) {
+  if (fileCache[path]) return fileCache[path];
+  const r = await fetch(API + path, { headers: { Authorization: 'Bearer ' + token } });
+  if (!r.ok) throw new Error('Kan ' + path + ' niet laden (' + r.status + ')');
+  const d = await r.json();
+  const content = decodeURIComponent(escape(atob(d.content.replace(/\n/g,''))));
+  fileCache[path] = { content, sha: d.sha };
+  return fileCache[path];
+}
+async function ghPut(path, content, sha, msg) {
+  const b64 = btoa(unescape(encodeURIComponent(content)));
+  const r = await fetch(API + path, {
+    method: 'PUT',
+    headers: { Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message: msg, content: b64, sha })
+  });
+  if (!r.ok) { const e = await r.json(); throw new Error(e.message || 'Opslaan mislukt'); }
+  const d = await r.json();
+  fileCache[path] = { content, sha: d.content.sha };
+  return d;
+}
+
+function extract(html, key) {
+  const re = new RegExp('<!--\\s*§' + key + '§\\s*-->(.*?)<!--\\s*§/' + key + '§\\s*-->', 's');
+  const m = html.match(re);
+  return m ? m[1].trim() : '';
+}
+function inject(html, key, value) {
+  const re = new RegExp('(<!--\\s*§' + key + '§\\s*-->)(.*?)(<!--\\s*§/' + key + '§\\s*-->)', 's');
+  return html.replace(re, '$1' + value + '$3');
+}
+function extractImgSrc(html, dataEdit) {
+  const re = new RegExp('<img[^>]*data-edit=["\']' + dataEdit + '["\'][^>]*src=["\']([^"\']+)["\']|<img[^>]*src=["\']([^"\']+)["\'][^>]*data-edit=["\']' + dataEdit + '["\']');
+  const m = html.match(re);
+  return m ? (m[1] || m[2]) : '';
+}
+function injectImgSrc(html, dataEdit, newSrc) {
+  let r = html.replace(new RegExp('(<img[^>]*data-edit=["\']' + dataEdit + '["\'][^>]*src=["\'])([^"\']+)(["\'])'), '$1' + newSrc + '$3');
+  r = r.replace(new RegExp('(<img[^>]*src=["\'])([^"\']+)(["\'][^>]*data-edit=["\']' + dataEdit + '["\'])'), '$1' + newSrc + '$3');
+  return r;
+}
+
+function markDirty(filePath) {
+  const fields = document.querySelectorAll('[data-field][data-file="' + filePath + '"]');
+  if (!fields.length) return;
+  let content = fileCache[filePath].content;
+  fields.forEach(el => { content = inject(content, el.dataset.field, el.value); });
+  pendingChanges[filePath] = content;
+  document.getElementById('pub-status').textContent = 'Wijzigingen nog niet gepubliceerd';
+  document.getElementById('pub-status').style.color = 'rgba(255,200,100,0.9)';
+  document.getElementById('pub-btn').disabled = false;
+}
+
+function esc(s) { return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function fieldHTML(fp, key, label, isTA, value) {
+  const attr = 'data-field="' + key + '" data-file="' + fp + '"';
+  const h = 'oninput="markDirty(\'' + fp + '\')"';
+  if (isTA) return '<div class="field-group"><label>' + label + '</label><textarea ' + attr + ' ' + h + '>' + esc(value) + '</textarea></div>';
+  return '<div class="field-group"><label>' + label + '</label><input type="text" ' + attr + ' ' + h + ' value="' + esc(value) + '"></div>';
+}
+
+function imgFieldHTML(fp, editKey, label, src, prefix) {
+  const rawSrc = src ? 'https://raw.githubusercontent.com/' + REPO + '/main/' + src.replace(/^(\.\.\/)+/, '') : '';
+  const prev = rawSrc
+    ? '<img class="img-preview" id="prev-' + editKey + '" src="' + rawSrc + '" onerror="this.style.background=\'var(--bg2)\';this.removeAttribute(\'src\')">'
+    : '<div class="img-preview placeholder" id="prev-' + editKey + '">Geen afbeelding</div>';
+  return '<div class="img-field"><label>' + label + '</label>' + prev +
+    '<div class="img-actions"><label class="file-label">&#128247; Kies foto<input type="file" accept="image/*" onchange="uploadImg(event,\'' + editKey + '\',\'' + fp + '\',\'' + prefix + '\')"></label>' +
+    '<span class="upload-status" id="upstat-' + editKey + '"></span></div></div>';
+}
+
+async function switchTab(tab) {
+  document.querySelectorAll('.sidebar-link[id^="tab-"]').forEach(el => el.classList.remove('active'));
+  const tEl = document.getElementById('tab-' + tab);
+  if (tEl) tEl.classList.add('active');
+  document.getElementById('main-area').innerHTML = '<div class="loading-msg">Laden&hellip;</div>';
+  try {
+    if (tab === 'home')  await renderHome();
+    if (tab === 'yoshi') await renderYoshi();
+    if (tab === 'cases') await renderCases();
+  } catch(e) {
+    document.getElementById('main-area').innerHTML = '<div class="loading-msg" style="color:var(--red)">Fout: ' + e.message + '<br><br><small>Controleer of je GitHub token actief is met repo-toegang.</small></div>';
+  }
+}
+
+async function renderHome() {
+  const fp = 'index.html';
+  const f  = await ghGet(fp);
+  const h  = f.content;
+  document.getElementById('main-area').innerHTML =
+    '<h1 class="page-h1">Home pagina</h1>' +
+    '<p class="page-sub">Pas de teksten op de hoofdpagina aan</p>' +
+    '<div class="section-heading">Hero tekst</div>' +
+    fieldHTML(fp,'hero-nl-1','Regel 1 &mdash; grote kop',false,extract(h,'hero-nl-1')) +
+    fieldHTML(fp,'hero-nl-2','Regel 2 &mdash; grote kop',false,extract(h,'hero-nl-2')) +
+    fieldHTML(fp,'hero-sub-nl','Subtekst onder de kop',true,extract(h,'hero-sub-nl')) +
+    '<div style="height:2rem"></div>';
+}
+
+async function renderYoshi() {
+  const fp = 'cases/yoshi-sushi.html';
+  const f  = await ghGet(fp);
+  const h  = f.content;
+  const px = '../';
+  document.getElementById('main-area').innerHTML =
+    '<h1 class="page-h1">Yoshi Sushi</h1>' +
+    '<p class="page-sub">Bewerk tekst, stats en foto\'s van de case pagina</p>' +
+    '<div class="section-heading">Tekst</div>' +
+    fieldHTML(fp,'ys-headline','Grote quote (linkerkant)',false,extract(h,'ys-headline')) +
+    fieldHTML(fp,'ys-body-1','Alinea 1',true,extract(h,'ys-body-1')) +
+    fieldHTML(fp,'ys-body-2','Alinea 2',true,extract(h,'ys-body-2')) +
+    fieldHTML(fp,'ys-body-3','Alinea 3',true,extract(h,'ys-body-3')) +
+    fieldHTML(fp,'ys-split-title','Feed sectie &mdash; Titel',false,extract(h,'ys-split-title')) +
+    fieldHTML(fp,'ys-split-text','Feed sectie &mdash; Tekst',true,extract(h,'ys-split-text')) +
+    '<div class="section-heading">Resultaten</div>' +
+    '<div class="two-col">' + fieldHTML(fp,'ys-r1-num','Getal 1',false,extract(h,'ys-r1-num')) + fieldHTML(fp,'ys-r1-label','Label 1',false,extract(h,'ys-r1-label').replace(/<br>/g,' ')) + '</div>' +
+    '<div class="two-col">' + fieldHTML(fp,'ys-r2-num','Getal 2',false,extract(h,'ys-r2-num')) + fieldHTML(fp,'ys-r2-label','Label 2',false,extract(h,'ys-r2-label').replace(/<br>/g,' ')) + '</div>' +
+    fieldHTML(fp,'ys-r3-label','Label 3 (tekst)',false,extract(h,'ys-r3-label').replace(/<br>/g,' ')) +
+    '<div class="section-heading">Foto\'s</div>' +
+    imgFieldHTML(fp,'ys-hero','Hero afbeelding (volledig scherm)',extractImgSrc(h,'ys-hero'),px) +
+    imgFieldHTML(fp,'ys-full1','Brede foto 1',extractImgSrc(h,'ys-full1'),px) +
+    imgFieldHTML(fp,'ys-p1','Foto rij &mdash; links',extractImgSrc(h,'ys-p1'),px) +
+    imgFieldHTML(fp,'ys-p2','Foto rij &mdash; midden',extractImgSrc(h,'ys-p2'),px) +
+    imgFieldHTML(fp,'ys-p3','Foto rij &mdash; rechts',extractImgSrc(h,'ys-p3'),px) +
+    imgFieldHTML(fp,'ys-split','Feed / Instagram foto',extractImgSrc(h,'ys-split'),px) +
+    imgFieldHTML(fp,'ys-full2','Brede foto 2',extractImgSrc(h,'ys-full2'),px) +
+    '<div style="height:2rem"></div>';
+}
+
+async function renderCases() {
+  const fp = 'cases.html';
+  const f  = await ghGet(fp);
+  const h  = f.content;
+  document.getElementById('main-area').innerHTML =
+    '<h1 class="page-h1">Cases overzicht</h1>' +
+    '<p class="page-sub">Bewerk de teksten op de cases-pagina</p>' +
+    '<div class="section-heading">Pagina intro</div>' +
+    fieldHTML(fp,'cases-sub','Ondertitel op de cases pagina',true,extract(h,'cases-sub')) +
+    '<div class="section-heading">Yoshi Sushi kaart</div>' +
+    fieldHTML(fp,'cases-ys-tag','Tag (bijv. Horeca &middot; Social Media)',false,extract(h,'cases-ys-tag').replace(/&middot;/g,'·')) +
+    fieldHTML(fp,'cases-ys-desc','Korte beschrijving',true,extract(h,'cases-ys-desc')) +
+    '<div style="height:2rem"></div>';
+}
+
+async function uploadImg(event, editKey, filePath, pathPrefix) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const statEl = document.getElementById('upstat-' + editKey);
+  statEl.textContent = 'Uploaden…';
+  statEl.style.color = 'var(--warm)';
+  try {
+    const b64 = await new Promise((res, rej) => {
+      const reader = new FileReader();
+      reader.onload  = e => res(e.target.result.split(',')[1]);
+      reader.onerror = rej;
+      reader.readAsDataURL(file);
+    });
+    const imgGhPath = 'images/' + file.name;
+    let sha;
+    try {
+      const check = await fetch(API + imgGhPath, { headers: { Authorization: 'Bearer ' + token } });
+      if (check.ok) { const d = await check.json(); sha = d.sha; }
+    } catch(_) {}
+    const body = { message: 'Upload foto: ' + file.name, content: b64 };
+    if (sha) body.sha = sha;
+    const r = await fetch(API + imgGhPath, {
+      method: 'PUT',
+      headers: { Authorization: 'Bearer ' + token, 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+    if (!r.ok) throw new Error('Upload mislukt');
+    const newSrc = pathPrefix + imgGhPath;
+    let content = fileCache[filePath].content;
+    content = injectImgSrc(content, editKey, newSrc);
+    fileCache[filePath].content = content;
+    pendingChanges[filePath] = content;
+    const prev = document.getElementById('prev-' + editKey);
+    if (prev) { prev.src = URL.createObjectURL(file); prev.style.display = 'block'; prev.className = 'img-preview'; }
+    statEl.textContent = '✓ ' + file.name;
+    statEl.style.color = 'var(--green)';
+    document.getElementById('pub-status').textContent = 'Wijzigingen nog niet gepubliceerd';
+    document.getElementById('pub-status').style.color = 'rgba(255,200,100,0.9)';
+    document.getElementById('pub-btn').disabled = false;
+  } catch(e) {
+    statEl.textContent = '✗ ' + e.message;
+    statEl.style.color = 'var(--red)';
+  }
+}
+
+async function doPublish() {
+  const btn = document.getElementById('pub-btn');
+  btn.disabled = true;
+  btn.textContent = 'Bezig…';
+  try {
+    for (const [path, content] of Object.entries(pendingChanges)) {
+      await ghPut(path, content, fileCache[path].sha, 'Inhoud bijgewerkt via Lusin Admin');
+    }
+    pendingChanges = {};
+    toast('✓ Wijzigingen zijn live! (kan 1–2 min duren)', 'ok');
+    document.getElementById('pub-status').textContent = 'Gepubliceerd ✓';
+    document.getElementById('pub-status').style.color = 'rgba(100,220,120,0.9)';
+    setTimeout(() => {
+      document.getElementById('pub-status').textContent = 'Geen wijzigingen';
+      document.getElementById('pub-status').style.color = 'rgba(255,255,255,0.4)';
+      btn.textContent = 'Publiceren op site';
+      btn.disabled = true;
+    }, 5000);
+  } catch(e) {
+    toast('Fout: ' + e.message, 'fail');
+    btn.disabled = false;
+    btn.textContent = 'Publiceren op site';
+  }
+}
+
+function toast(msg, type) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.className = 'toast ' + type + ' visible';
+  setTimeout(() => el.classList.remove('visible'), 4500);
+}
+</script>
+</body>
+</html>
