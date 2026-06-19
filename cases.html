@@ -58,16 +58,15 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
 }
 
 /* CASES LIST */
-.cases-list { padding: 0 0 100px; }
+.cases-list { padding: 0 0 100px; display: flex; flex-direction: column; gap: 16px; }
 
 .case-row {
   display: grid; grid-template-columns: 340px 1fr;
-  border-top: 0.5px solid var(--rule);
+  border: 0.5px solid var(--rule); border-radius: 4px;
   text-decoration: none; color: var(--dark);
   transition: background 0.3s; overflow: hidden;
-  height: 260px;
+  height: 360px;
 }
-.cases-list .case-row:last-child { border-bottom: 0.5px solid var(--rule); }
 .case-row:not(.case-soon):hover { background: var(--bg2); }
 .case-row:not(.case-soon):hover .case-thumb img { transform: scale(1.06); }
 .case-row:not(.case-soon):hover .case-cta { gap: 0.9rem; }
