@@ -108,6 +108,7 @@ textarea { resize: vertical; min-height: 90px; line-height: 1.65; }
       <div class="sidebar-link active" id="tab-home" onclick="switchTab('home')">&#127968; Home</div>
       <div class="sidebar-link" id="tab-yoshi" onclick="switchTab('yoshi')">&#127843; Yoshi Sushi</div>
       <div class="sidebar-link" id="tab-cases" onclick="switchTab('cases')">&#128193; Cases overzicht</div>
+      <div class="sidebar-link" id="tab-ek" onclick="switchTab('ek')">&#128149; EK Beauty Clinic</div>
       <hr class="sidebar-divider">
       <div class="sidebar-group-label">Links</div>
       <a class="sidebar-link" href="https://lusinagency.nl" target="_blank">&#8599; Bekijk site</a>
@@ -232,6 +233,7 @@ async function switchTab(tab) {
     if (tab === 'home')  await renderHome();
     if (tab === 'yoshi') await renderYoshi();
     if (tab === 'cases') await renderCases();
+    if (tab === 'ek')    await renderEK();
   } catch(e) {
     document.getElementById('main-area').innerHTML = '<div class="loading-msg" style="color:var(--red)">Fout: ' + e.message + '<br><br><small>Controleer of je GitHub token actief is met repo-toegang.</small></div>';
   }
@@ -339,6 +341,42 @@ async function uploadImg(event, editKey, filePath, pathPrefix) {
     statEl.textContent = '✗ ' + e.message;
     statEl.style.color = 'var(--red)';
   }
+}
+
+
+async function renderEK() {
+  const fp   = 'cases/ek-beauty-clinic.html';
+  const fpC  = 'cases.html';
+  const [f, fc] = await Promise.all([ghGet(fp), ghGet(fpC)]);
+  const h  = f.content;
+  const hc = fc.content;
+  const px = '../';
+  document.getElementById('main-area').innerHTML =
+    '<h1 class="page-h1">EK Beauty Clinic</h1>' +
+    '<p class="page-sub">Bewerk tekst, stats en foto\'s van de EK Beauty case pagina</p>' +
+    '<div class="section-heading">Tekst</div>' +
+    fieldHTML(fp,'ek-headline','Grote quote (linkerkant)',false,extract(h,'ek-headline')) +
+    fieldHTML(fp,'ek-body-1','Alinea 1',true,extract(h,'ek-body-1')) +
+    fieldHTML(fp,'ek-body-2','Alinea 2',true,extract(h,'ek-body-2')) +
+    fieldHTML(fp,'ek-body-3','Alinea 3',true,extract(h,'ek-body-3')) +
+    fieldHTML(fp,'ek-split-title','Feed sectie \u2014 Titel',false,extract(h,'ek-split-title')) +
+    fieldHTML(fp,'ek-split-text','Feed sectie \u2014 Tekst',true,extract(h,'ek-split-text')) +
+    '<div class="section-heading">Resultaten</div>' +
+    '<div class="two-col">' + fieldHTML(fp,'ek-r1-num','Getal 1',false,extract(h,'ek-r1-num')) + fieldHTML(fp,'ek-r1-label','Label 1',false,extract(h,'ek-r1-label')) + '</div>' +
+    '<div class="two-col">' + fieldHTML(fp,'ek-r2-num','Getal 2',false,extract(h,'ek-r2-num')) + fieldHTML(fp,'ek-r2-label','Label 2',false,extract(h,'ek-r2-label')) + '</div>' +
+    fieldHTML(fp,'ek-r3-label','Label 3 (tekst)',false,extract(h,'ek-r3-label')) +
+    '<div class="section-heading">Foto\'s</div>' +
+    imgFieldHTML(fp,'ek-hero','Hero afbeelding (volledig scherm)',extractImgSrc(h,'ek-hero'),px) +
+    imgFieldHTML(fp,'ek-full1','Brede foto 1',extractImgSrc(h,'ek-full1'),px) +
+    imgFieldHTML(fp,'ek-p1','Foto rij \u2014 links',extractImgSrc(h,'ek-p1'),px) +
+    imgFieldHTML(fp,'ek-p2','Foto rij \u2014 midden',extractImgSrc(h,'ek-p2'),px) +
+    imgFieldHTML(fp,'ek-p3','Foto rij \u2014 rechts',extractImgSrc(h,'ek-p3'),px) +
+    imgFieldHTML(fp,'ek-split','Feed / Instagram foto',extractImgSrc(h,'ek-split'),px) +
+    imgFieldHTML(fp,'ek-full2','Brede foto 2',extractImgSrc(h,'ek-full2'),px) +
+    '<div class="section-heading">Cases kaart</div>' +
+    fieldHTML(fpC,'cases-ek-tag','Tag op de cases overzichtspagina',false,extract(hc,'cases-ek-tag').replace(/&middot;/g,\'\u00b7\')) +
+    fieldHTML(fpC,'cases-ek-desc','Beschrijving op de cases overzichtspagina',true,extract(hc,'cases-ek-desc')) +
+    '<div style="height:2rem"></div>';
 }
 
 async function doPublish() {
