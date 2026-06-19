@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yoshi Sushi — Lusin Agency Cases</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg: #F5F1EB;
+  --bg2: #EDE7DE;
+  --white: #FDFBF8;
+  --dark: #1A1A1A;
+  --mid: #555;
+  --light: #999;
+  --rule: #D8CFBF;
+  --warm: #B5956E;
+}
+html { scroll-behavior: smooth; }
+body { font-family: "Space Grotesk", sans-serif; letter-spacing: 0.01em; background: var(--bg); color: var(--dark); font-size: 15px; line-height: 1.7; font-weight: 300; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5vw; height: 64px;
+  background: rgba(247,244,240,0.97); backdrop-filter: blur(10px);
+  border-bottom: 0.5px solid var(--rule);
+}
+.nav-logo img { height: 28px; width: auto; display: block; }
+.nav-links { display: flex; gap: 1.75rem; align-items: center; }
+.nav-links a { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s; font-weight: 400; }
+.nav-links a:hover, .nav-links a.active { color: var(--dark); }
+.nav-menu-btn { display: none; background: none; border: none; cursor: pointer; font-size: 20px; color: var(--dark); }
+.mobile-nav { display: none; position: fixed; top: 64px; left: 0; right: 0; z-index: 199; background: var(--bg); border-bottom: 0.5px solid var(--rule); padding: 2rem 5vw; flex-direction: column; gap: 1.5rem; }
+.mobile-nav.open { display: flex; }
+.mobile-nav a { font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); text-decoration: none; font-weight: 400; }
+
+/* WHATSAPP */
+.wa-float { position: fixed; bottom: 28px; right: 28px; z-index: 300; width: 52px; height: 52px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 18px rgba(0,0,0,0.15); text-decoration: none; transition: transform 0.2s; }
+.wa-float:hover { transform: scale(1.07); }
+.wa-float svg { width: 26px; height: 26px; fill: white; }
+
+/* HERO */
+.case-hero {
+  padding-top: 64px;
+  position: relative; height: 70vh; min-height: 480px;
+  overflow: hidden; display: flex; align-items: flex-end;
+}
+.case-hero img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+}
+.case-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(15,10,5,0.8) 0%, rgba(15,10,5,0.2) 60%, transparent 100%);
+}
+.case-hero-content {
+  position: relative; z-index: 2;
+  padding: 3rem 6vw 4rem;
+  width: 100%;
+}
+.back-link {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,0.55); text-decoration: none;
+  margin-bottom: 2rem; transition: color 0.2s;
+}
+.back-link:hover { color: white; }
+.back-link svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+.case-hero-tag {
+  display: inline-block; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+  background: var(--warm); color: white; padding: 3px 10px; margin-bottom: 1rem; font-weight: 400;
+}
+.case-hero h1 {
+  font-family: "Outfit", sans-serif; font-size: clamp(40px, 6vw, 80px);
+  font-weight: 200; color: white; letter-spacing: 0.02em; line-height: 1.05;
+  margin-bottom: 0.5rem;
+}
+.case-hero-sub { font-size: 13px; color: rgba(255,255,255,0.5); letter-spacing: 0.1em; text-transform: uppercase; }
+
+/* CONTENT */
+.case-content { max-width: 1100px; margin: 0 auto; padding: 0 6vw; }
+
+/* INTRO */
+.case-intro {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 6rem;
+  padding: 6rem 0; border-bottom: 0.5px solid var(--rule);
+}
+.case-intro-lead {
+  font-family: "Outfit", sans-serif; font-size: clamp(20px, 2vw, 26px);
+  font-weight: 300; line-height: 1.5; color: var(--dark);
+}
+.case-intro-body { color: var(--mid); line-height: 1.9; font-size: 14px; }
+.case-intro-body p + p { margin-top: 1rem; }
+
+/* META */
+.case-meta {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2px; background: var(--rule); margin: 0;
+  border-top: 0.5px solid var(--rule); border-bottom: 0.5px solid var(--rule);
+}
+.case-meta-item {
+  background: var(--white); padding: 2rem;
+}
+.case-meta-label { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm); margin-bottom: 0.5rem; font-weight: 400; }
+.case-meta-value { font-family: "Outfit", sans-serif; font-size: 16px; font-weight: 300; color: var(--dark); }
+
+/* IMAGES */
+.case-images { padding: 5rem 0; border-bottom: 0.5px solid var(--rule); }
+.case-images-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--warm); margin-bottom: 2rem; font-weight: 400; }
+.image-grid-main {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2px;
+  margin-bottom: 2px;
+}
+.image-grid-secondary {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+.img-block { overflow: hidden; background: var(--bg2); }
+.img-block img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease; }
+.img-block:hover img { transform: scale(1.03); }
+.img-block.tall { min-height: 480px; }
+.img-block.medium { min-height: 280px; }
+.img-block.short { min-height: 280px; }
+
+/* RESULTS */
+.case-results { padding: 5rem 0; border-bottom: 0.5px solid var(--rule); }
+.case-results h2 { font-family: "Outfit", sans-serif; font-size: clamp(28px, 3vw, 40px); font-weight: 200; margin-bottom: 3rem; }
+.results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; background: var(--rule); }
+.result-item { background: var(--bg2); padding: 2.5rem 2rem; }
+.result-number { font-family: "Outfit", sans-serif; font-size: clamp(36px, 4vw, 54px); font-weight: 200; color: var(--warm); line-height: 1; margin-bottom: 0.5rem; }
+.result-label { font-size: 12px; color: var(--mid); letter-spacing: 0.06em; line-height: 1.5; }
+
+/* NEXT CASE */
+.next-case {
+  padding: 5rem 0; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 2rem;
+}
+.next-case-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--light); font-weight: 400; margin-bottom: 0.5rem; }
+.next-case-name { font-family: "Outfit", sans-serif; font-size: 28px; font-weight: 200; color: var(--dark); }
+.next-case-link {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--dark); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: 2px;
+  transition: border-color 0.2s;
+}
+.next-case-link:hover { border-color: var(--dark); }
+.next-case-link svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+
+/* FOOTER */
+footer {
+  background: var(--dark); padding: 60px 6vw; display: flex;
+  align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 2rem;
+}
+.footer-brand { font-family: "Outfit", sans-serif; font-size: 24px; font-weight: 200; color: white; letter-spacing: 0.12em; }
+.footer-links { display: flex; gap: 2rem; }
+.footer-links a { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+.footer-links a:hover { color: white; }
+.footer-copy { font-size: 11px; color: rgba(255,255,255,0.25); letter-spacing: 0.06em; }
+
+@media (max-width: 960px) {
+  .nav-links { display: none; }
+  .nav-menu-btn { display: block; }
+  .case-intro { grid-template-columns: 1fr; gap: 2rem; }
+  .case-meta { grid-template-columns: 1fr 1fr; }
+  .results-grid { grid-template-columns: 1fr; }
+  .image-grid-main { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .case-meta { grid-template-columns: 1fr; }
+  .image-grid-secondary { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 32'%3E%3Ctext y='24' font-family='Georgia,serif' font-size='22' fill='%231A1A1A' letter-spacing='2'%3ELUSIN%3C/text%3E%3Ctext x='84' y='24' font-family='Georgia,serif' font-size='13' fill='%23B5956E' letter-spacing='1'%3EAGENCY%3C/text%3E%3C/svg%3E" alt="Lusin Agency">
+  </a>
+  <div class="nav-links">
+    <a href="../index.html#services">Services</a>
+    <a href="../index.html#packages">Pakketten</a>
+    <a href="../cases.html" class="active">Cases</a>
+    <a href="../index.html#about">Over ons</a>
+    <a href="../index.html#contact">Contact</a>
+  </div>
+  <button class="nav-menu-btn" onclick="document.getElementById('mobile-nav').classList.toggle('open')">&#9776;</button>
+</nav>
+
+<div class="mobile-nav" id="mobile-nav">
+  <a href="../index.html#services" onclick="this.closest('.mobile-nav').classList.remove('open')">Services</a>
+  <a href="../index.html#packages" onclick="this.closest('.mobile-nav').classList.remove('open')">Pakketten</a>
+  <a href="../cases.html" onclick="this.closest('.mobile-nav').classList.remove('open')">Cases</a>
+  <a href="../index.html#about" onclick="this.closest('.mobile-nav').classList.remove('open')">Over ons</a>
+  <a href="../index.html#contact" onclick="this.closest('.mobile-nav').classList.remove('open')">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="case-hero">
+  <img src="../images/feed-yoshi.jpeg" alt="Yoshi Sushi feed">
+  <div class="case-hero-overlay"></div>
+  <div class="case-hero-content">
+    <a href="../cases.html" class="back-link">
+      <svg viewBox="0 0 24 24"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Alle cases
+    </a>
+    <div class="case-hero-tag">Horeca · Social Media</div>
+    <h1>Yoshi Sushi</h1>
+    <div class="case-hero-sub">Amsterdam</div>
+  </div>
+</section>
+
+<!-- CONTENT -->
+<div class="case-content">
+
+  <!-- META BAR -->
+  <div class="case-meta">
+    <div class="case-meta-item">
+      <div class="case-meta-label">Branche</div>
+      <div class="case-meta-value">Horeca</div>
+    </div>
+    <div class="case-meta-item">
+      <div class="case-meta-label">Service</div>
+      <div class="case-meta-value">Social Media Management</div>
+    </div>
+    <div class="case-meta-item">
+      <div class="case-meta-label">Locatie</div>
+      <div class="case-meta-value">Amsterdam</div>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="case-intro">
+    <div class="case-intro-lead">
+      Van lokale sushi bar naar een herkenbaar merk op Instagram — met content die écht stopt.
+    </div>
+    <div class="case-intro-body">
+      <p>Yoshi Sushi is een all-you-can-eat sushirestaurant in Amsterdam met een trouwe doelgroep, maar nog zonder een sterke visuele identiteit op social media. De uitdaging: hoe laat je mensen watertanden via een scherm?</p>
+      <p>Lusin Agency nam het volledige Instagram-beheer over. Van strategie en contentvorm tot shooting, editing en plaatsing. Elke post is gemaakt om de beleving van het restaurant te vertalen naar een feed die uitnodigt — consistent, warm en eetlustopwekkend.</p>
+      <p>Het resultaat: een herkenbare feed, meer bereik en aantoonbaar meer tafelreserveringen via Instagram.</p>
+    </div>
+  </div>
+
+  <!-- IMAGES -->
+  <div class="case-images">
+    <div class="case-images-label">Content & Feed</div>
+
+    <div class="image-grid-main">
+      <div class="img-block tall">
+        <img src="../images/feed-yoshi.jpeg" alt="Yoshi Sushi Instagram feed overzicht">
+      </div>
+      <div class="img-block tall">
+        <img src="../images/HOE WERKT ALL YOU CAN EAT BIJ YOSHI SUSHI-2 copy.png" alt="Yoshi Sushi all you can eat graphic">
+      </div>
+    </div>
+
+    <div class="image-grid-secondary">
+      <div class="img-block medium">
+        <img src="../images/HOE WERKT ALL YOU CAN EAT BIJ YOSHI SUSHI-3 copy.jpg" alt="Yoshi Sushi content graphic">
+      </div>
+      <div class="img-block medium" style="background: var(--bg2); display:flex; align-items:center; justify-content:center;">
+        <!-- Video placeholder -->
+        <div style="text-align:center; padding: 3rem;">
+          <div style="font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--warm); margin-bottom:1rem; font-weight:400;">Video content</div>
+          <div style="font-family:'Outfit',sans-serif; font-size:18px; font-weight:200; color:var(--mid);">Binnenkort</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="case-results">
+    <h2>Resultaten</h2>
+    <div class="results-grid">
+      <div class="result-item">
+        <div class="result-number">3×</div>
+        <div class="result-label">Meer bereik per post<br>binnen 3 maanden</div>
+      </div>
+      <div class="result-item">
+        <div class="result-number">+60%</div>
+        <div class="result-label">Groei in volgers<br>op Instagram</div>
+      </div>
+      <div class="result-item">
+        <div class="result-number">↑</div>
+        <div class="result-label">Aantoonbaar meer<br>tafelreserveringen via social</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEXT CASE -->
+  <div class="next-case">
+    <div>
+      <div class="next-case-label">Volgende case</div>
+      <div class="next-case-name">Binnenkort</div>
+    </div>
+    <a href="../cases.html" class="next-case-link">
+      Alle cases bekijken
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+    </a>
+  </div>
+
+</div><!-- /case-content -->
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">LUSIN</div>
+  <div class="footer-links">
+    <a href="../index.html">Home</a>
+    <a href="../cases.html">Cases</a>
+    <a href="../index.html#contact">Contact</a>
+  </div>
+  <div class="footer-copy">© 2025 Lusin Agency</div>
+</footer>
+
+<!-- WHATSAPP -->
+<a href="https://wa.me/31612345678" class="wa-float" target="_blank" rel="noopener">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+</body>
+</html>
