@@ -57,80 +57,84 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
   font-size: 16px; color: var(--mid); font-weight: 300; line-height: 1.7; max-width: 480px;
 }
 
-/* CASES LIST */
-.cases-list {
-  padding: 0 0 120px;
-}
-.case-row {
-  display: grid; grid-template-columns: 40% 60%;
-  border-top: 0.5px solid var(--rule);
-  text-decoration: none; color: var(--dark);
-  transition: background 0.35s;
-  min-height: 300px;
-  overflow: hidden;
-}
-.cases-list .case-row:last-child { border-bottom: 0.5px solid var(--rule); }
-.case-row:not(.case-soon):hover { background: var(--bg2); }
-.case-row:not(.case-soon):hover .case-img img { transform: scale(1.05); }
-.case-row:not(.case-soon):hover .case-cta { letter-spacing: 0.22em; }
+/* CASES GRID — full-bleed cinematic cards */
+.cases-grid { padding-bottom: 120px; }
 
-/* Image side */
-.case-img {
-  overflow: hidden; background: var(--bg2);
-  position: relative;
+.case-card {
+  position: relative; display: block; text-decoration: none;
+  overflow: hidden; height: 65vh; min-height: 420px;
+  border-top: 0.5px solid var(--rule);
 }
-.case-img img {
+.case-card img {
   width: 100%; height: 100%; object-fit: cover; display: block;
-  transition: transform 0.7s ease;
+  transition: transform 1s cubic-bezier(0.25,0.46,0.45,0.94);
 }
-.soon-img {
-  background: var(--bg2);
+.case-card:hover img { transform: scale(1.04); }
+.case-card-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(170deg, rgba(0,0,0,0.15) 0%, rgba(10,8,5,0.72) 100%);
+  transition: background 0.5s;
+}
+.case-card:hover .case-card-overlay {
+  background: linear-gradient(170deg, rgba(0,0,0,0.2) 0%, rgba(10,8,5,0.85) 100%);
+}
+.case-card-content {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: 2.5rem 4vw;
+}
+.case-card-top { display: flex; justify-content: space-between; align-items: flex-start; }
+.case-card-num {
+  font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(255,255,255,0.45); font-weight: 400; font-family: "Space Grotesk", sans-serif;
+}
+.case-card-tag {
+  font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(255,255,255,0.75); font-weight: 500;
+  background: rgba(255,255,255,0.12); backdrop-filter: blur(8px);
+  padding: 5px 14px; border-radius: 20px; border: 0.5px solid rgba(255,255,255,0.2);
+}
+.case-card-bottom { display: flex; justify-content: space-between; align-items: flex-end; }
+.case-card-name {
+  font-family: "Outfit", sans-serif; font-weight: 200;
+  font-size: clamp(2.8rem, 5.5vw, 6rem); line-height: 0.92;
+  letter-spacing: -0.03em; color: #fff;
+}
+.case-card-place {
+  font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(255,255,255,0.45); margin-top: 0.5rem; font-weight: 300;
+}
+.case-card-cta {
+  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: #fff; font-weight: 500; display: flex; align-items: center; gap: 0.6rem;
+  transition: gap 0.35s; white-space: nowrap; align-self: flex-end; padding-bottom: 0.2rem;
+}
+.case-card:hover .case-card-cta { gap: 1.1rem; }
+.case-card-cta svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.5; }
+
+/* Coming soon strip */
+.cases-soon-row {
+  display: grid; grid-template-columns: 1fr 1fr;
+  border-top: 0.5px solid var(--rule); border-bottom: 0.5px solid var(--rule);
+}
+.case-soon-card {
+  padding: 3rem 4vw; display: flex; flex-direction: column; gap: 0.6rem;
   background-image: repeating-linear-gradient(45deg, transparent, transparent 24px, rgba(0,0,0,0.025) 24px, rgba(0,0,0,0.025) 25px);
 }
-
-/* Text side */
-.case-body {
-  padding: 2.5rem 4vw;
-  display: flex; flex-direction: column; justify-content: center; gap: 0.9rem;
-  border-left: 0.5px solid var(--rule);
-}
-.case-tag {
-  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--warm); font-weight: 500;
-}
-.case-client {
-  font-family: "Outfit", sans-serif; font-weight: 200;
-  font-size: clamp(1.8rem, 3vw, 3rem); line-height: 1;
-  letter-spacing: -0.025em; color: var(--dark);
-}
-.soon-client { color: var(--light); }
-.case-place {
-  font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
-  color: var(--light); font-weight: 400;
-}
-.case-desc {
-  font-size: 14px; color: var(--mid); line-height: 1.75;
-  max-width: 360px; font-weight: 300;
-  border-left: 2px solid var(--rule); padding-left: 1rem;
-}
-.case-cta {
-  display: inline-flex; align-items: center; gap: 0.7rem; margin-top: 0.8rem;
-  font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--dark); font-weight: 500;
-  transition: letter-spacing 0.3s;
-}
-.case-cta svg { width: 15px; height: 15px; stroke: currentColor; fill: none; stroke-width: 1.5; }
-.case-cta.muted { color: var(--light); }
+.case-soon-card + .case-soon-card { border-left: 0.5px solid var(--rule); }
+.soon-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--light); font-weight: 500; }
+.soon-title { font-family: "Outfit", sans-serif; font-weight: 200; font-size: 2rem; color: var(--light); letter-spacing: -0.02em; }
+.soon-cta { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--light); margin-top: 0.3rem; }
 
 @media (max-width: 768px) {
   .nav-links { display: none; }
   .nav-menu-btn { display: block; }
   .cases-hero { padding: 110px 6vw 60px; }
   .cases-title { font-size: 3.5rem; }
-  .case-row { grid-template-columns: 1fr; min-height: auto; }
-  .case-img { height: 65vw; }
-  .case-body { padding: 2.5rem 6vw; border-left: none; border-top: 0.5px solid var(--rule); }
-  .case-client { font-size: 2.5rem; }
+  .case-card { height: 70vw; min-height: 300px; }
+  .case-card-name { font-size: 2.2rem; }
+  .cases-soon-row { grid-template-columns: 1fr; }
+  .case-soon-card + .case-soon-card { border-left: none; border-top: 0.5px solid var(--rule); }
 }
 </style>
 </head>
@@ -178,50 +182,55 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
   <p class="cases-sub" data-en="Every brand has its own story. We translate that into content that stops, touches and converts."><!-- §cases-sub§ -->Elk merk heeft een eigen verhaal. Wij vertalen dat naar content die stopt, raakt en converteert.<!-- §/cases-sub§ --></p>
 </div>
 
-<!-- CASES LIST -->
-<section class="cases-list">
+<!-- CASES GRID -->
+<section class="cases-grid">
 
-  <a href="cases/yoshi-sushi.html" class="case-row">
-    <div class="case-img">
-      <img src="images/feed-yoshi.jpeg" alt="Yoshi Sushi" data-edit="cases-ys-img" style="width:100%;height:100%;object-fit:cover">
-    </div>
-    <div class="case-body">
-      <span class="case-tag" data-en="Hospitality · Social Media Management"><!-- §cases-ys-tag§ -->Horeca · Content Creation | Social Media Managment<!-- §/cases-ys-tag§ --></span>
-      <h2 class="case-client">Yoshi Sushi</h2>
-      <p class="case-place">Gouda</p>
-      <p class="case-desc" data-en="From zero to a recognizable social media brand — content that truly captures the atmosphere of the restaurant."><!-- §cases-ys-desc§ -->Van nul naar een complete online uitstraling.<!-- §/cases-ys-desc§ --></p>
-      <span class="case-cta" data-en="View case →">Bekijk case <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+  <a href="cases/yoshi-sushi.html" class="case-card">
+    <img src="images/feed-yoshi.jpeg" alt="Yoshi Sushi" data-edit="cases-ys-img">
+    <div class="case-card-overlay"></div>
+    <div class="case-card-content">
+      <div class="case-card-top">
+        <span class="case-card-num">01</span>
+        <span class="case-card-tag" data-en="Hospitality · Social Media"><!-- §cases-ys-tag§ -->Horeca · Social Media<!-- §/cases-ys-tag§ --></span>
+      </div>
+      <div class="case-card-bottom">
+        <div>
+          <div class="case-card-name">Yoshi Sushi</div>
+          <div class="case-card-place">Gouda</div>
+        </div>
+        <span class="case-card-cta" data-en="View case →">Bekijk case <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
     </div>
   </a>
 
-    <a href="cases/ek-beauty-clinic.html" class="case-row">
-    <div class="case-img" style="background:var(--bg2);display:flex;align-items:center;justify-content:center;">
-      <img src="images/IMG_3773 2.jpg" alt="EK Beauty Clinic" id="ek-card-img" style="width:100%;height:100%;object-fit:cover" data-edit="cases-ek-img">
-    </div>
-    <div class="case-body">
-      <span class="case-tag" data-en="Beauty · Social Media Management"><!-- §cases-ek-tag§ -->Beauty · Content Creation | Social Media Managment<!-- §/cases-ek-tag§ --></span>
-      <h2 class="case-client">EK Beauty Clinic</h2>
-      <p class="case-place">Den Haag</p>
-      <p class="case-desc" data-en="A polished brand that attracts clients — content that showcases the quality of the clinic."><!-- §cases-ek-desc§ -->Een verzorgd merk dat klanten aantrekt — content die de kwaliteit van de kliniek laat zien.<!-- §/cases-ek-desc§ --></p>
-      <span class="case-cta" data-en="View case →">Bekijk case <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+  <a href="cases/ek-beauty-clinic.html" class="case-card">
+    <img src="images/IMG_3773 2.jpg" alt="EK Beauty Clinic" id="ek-card-img" data-edit="cases-ek-img">
+    <div class="case-card-overlay"></div>
+    <div class="case-card-content">
+      <div class="case-card-top">
+        <span class="case-card-num">02</span>
+        <span class="case-card-tag" data-en="Beauty · Social Media"><!-- §cases-ek-tag§ -->Beauty · Social Media<!-- §/cases-ek-tag§ --></span>
+      </div>
+      <div class="case-card-bottom">
+        <div>
+          <div class="case-card-name">EK Beauty Clinic</div>
+          <div class="case-card-place">Den Haag</div>
+        </div>
+        <span class="case-card-cta" data-en="View case →">Bekijk case <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
     </div>
   </a>
 
-  <div class="case-row case-soon">
-    <div class="case-img soon-img"></div>
-    <div class="case-body">
-      <span class="case-tag" data-en="Coming soon">Binnenkort</span>
-      <h2 class="case-client soon-client" data-en="New case">Nieuwe case</h2>
-      <span class="case-cta muted" data-en="Coming soon →">In aantocht →</span>
+  <div class="cases-soon-row">
+    <div class="case-soon-card">
+      <span class="soon-label" data-en="Coming soon">Binnenkort</span>
+      <div class="soon-title" data-en="New case">Nieuwe case</div>
+      <span class="soon-cta" data-en="Coming soon →">In aantocht →</span>
     </div>
-  </div>
-
-  <div class="case-row case-soon">
-    <div class="case-img soon-img"></div>
-    <div class="case-body">
-      <span class="case-tag" data-en="Coming soon">Binnenkort</span>
-      <h2 class="case-client soon-client" data-en="New case">Nieuwe case</h2>
-      <span class="case-cta muted" data-en="Coming soon →">In aantocht →</span>
+    <div class="case-soon-card">
+      <span class="soon-label" data-en="Coming soon">Binnenkort</span>
+      <div class="soon-title" data-en="New case">Nieuwe case</div>
+      <span class="soon-cta" data-en="Coming soon →">In aantocht →</span>
     </div>
   </div>
 
