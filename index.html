@@ -855,7 +855,11 @@ lb.addEventListener('click', e => { if (e.target === lb || e.target === lbImg) c
 document.addEventListener('keydown', e => { if (!lb.classList.contains('active')) return; if (e.key === 'Escape') closeLb(); if (e.key === 'ArrowRight') showNext(); if (e.key === 'ArrowLeft') showPrev(); });
 function setLang(lang) {
   document.querySelectorAll(".lang-toggle button").forEach((b,i) => b.classList.toggle("active",(lang==="nl"&&i===0)||(lang==="en"&&i===1)));
-  document.querySelectorAll("[data-nl]").forEach(el => { const t=el.getAttribute("data-"+lang); if(t) el.innerHTML=t; });
+  document.querySelectorAll("[data-nl],[data-en]").forEach(el => {
+    if (!el.dataset.nl) el.dataset.nl = el.innerHTML;
+    const t=el.getAttribute("data-"+lang);
+    if(t) el.innerHTML=t;
+  });
   document.documentElement.lang = lang;
 }
 function toggleMenu() { document.getElementById("mobile-nav").classList.toggle("open"); }

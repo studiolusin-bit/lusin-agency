@@ -314,13 +314,13 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
 
 <!-- STORY -->
 <div class="case-story">
-  <div class="story-lead">
+  <div class="story-lead" data-en="A polished brand that attracts and retains clients.">
     <!-- §ek-headline§ -->Een verzorgd merk dat klanten aantrekt en terugbrengt.<!-- §/ek-headline§ -->
   </div>
   <div class="story-body">
-    <p><!-- §ek-body-1§ -->EK Beauty Clinic is een schoonheidssalon in Den Haag met een breed aanbod aan beautytreating. De kliniek staat bekend om haar vakmanschap en persoonlijke aanpak, maar had online nog geen uitstraling die daarbij paste.<!-- §/ek-body-1§ --></p>
-    <p><!-- §ek-body-2§ -->Samen met EK Beauty Clinic zijn we begonnen met het opzetten van een professionele en herkenbare social media uitstraling. Van moodboard en contentstrategie tot fotografie en dagelijks beheer — alles afgestemd op de stijl van de salon.<!-- §/ek-body-2§ --></p>
-    <p><!-- §ek-body-3§ -->Elke post is gemaakt om de kwaliteit en sfeer van de kliniek te laten zien — warm, verzorgd en professioneel. Het resultaat is een feed die vertrouwen wekt en nieuwe klanten aantrekt.<!-- §/ek-body-3§ --></p>
+    <p data-en="EK Beauty Clinic is a beauty salon in The Hague with a wide range of beauty treatments. The clinic is known for its expertise and personal approach, but hadn't yet built an online presence to match."><!-- §ek-body-1§ -->EK Beauty Clinic is een schoonheidssalon in Den Haag met een breed aanbod aan beautytreating. De kliniek staat bekend om haar vakmanschap en persoonlijke aanpak, maar had online nog geen uitstraling die daarbij paste.<!-- §/ek-body-1§ --></p>
+    <p data-en="Together with EK Beauty Clinic we started building a professional and recognizable social media presence. From moodboard and content strategy to photography and daily management — all tailored to the salon's style."><!-- §ek-body-2§ -->Samen met EK Beauty Clinic zijn we begonnen met het opzetten van een professionele en herkenbare social media uitstraling. Van moodboard en contentstrategie tot fotografie en dagelijks beheer — alles afgestemd op de stijl van de salon.<!-- §/ek-body-2§ --></p>
+    <p data-en="Every post is crafted to showcase the quality and atmosphere of the clinic — warm, polished and professional. The result is a feed that builds trust and attracts new clients."><!-- §ek-body-3§ -->Elke post is gemaakt om de kwaliteit en sfeer van de kliniek te laten zien — warm, verzorgd en professioneel. Het resultaat is een feed die vertrouwen wekt en nieuwe klanten aantrekt.<!-- §/ek-body-3§ --></p>
   </div>
 </div>
 
@@ -343,8 +343,8 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
   </div>
   <div class="split-body">
     <span class="split-label">Content &amp; Feed</span>
-    <div class="split-title"><!-- §ek-split-title§ -->Een feed die uitstraalt wat de kliniek te bieden heeft.<!-- §/ek-split-title§ --></div>
-    <p class="split-text"><!-- §ek-split-text§ -->Consistente beelden, warme kleuren en een verzorgde stijl die aansluit bij de identiteit van de kliniek. Een feed die potentiële klanten overtuigt en bestaande klanten blijft inspireren.<!-- §/ek-split-text§ --></p>
+    <div class="split-title" data-en="A feed that showcases what the clinic has to offer."><!-- §ek-split-title§ -->Een feed die uitstraalt wat de kliniek te bieden heeft.<!-- §/ek-split-title§ --></div>
+    <p class="split-text" data-en="Consistent images, warm colors and a polished style that matches the clinic's identity. A feed that convinces potential clients and keeps inspiring existing ones."><!-- §ek-split-text§ -->Consistente beelden, warme kleuren en een verzorgde stijl die aansluit bij de identiteit van de kliniek. Een feed die potentiële klanten overtuigt en bestaande klanten blijft inspireren.<!-- §/ek-split-text§ --></p>
   </div>
 </div>
 
@@ -355,19 +355,18 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
 
 <!-- RESULTS -->
 <div class="case-results">
-  <h2 data-nl="Resultaten" data-en="Results">Resultaten</h2>
   <div class="results-grid">
     <div class="result-item">
       <div class="result-number"><!-- §ek-r1-num§ -->—<!-- §/ek-r1-num§ --></div>
-      <div class="result-label"><!-- §ek-r1-label§ -->Nog toe te voegen<!-- §/ek-r1-label§ --></div>
+      <div class="result-label" data-en="To be added"><!-- §ek-r1-label§ -->Nog toe te voegen<!-- §/ek-r1-label§ --></div>
     </div>
     <div class="result-item">
       <div class="result-number"><!-- §ek-r2-num§ -->—<!-- §/ek-r2-num§ --></div>
-      <div class="result-label"><!-- §ek-r2-label§ -->Nog toe te voegen<!-- §/ek-r2-label§ --></div>
+      <div class="result-label" data-en="To be added"><!-- §ek-r2-label§ -->Nog toe te voegen<!-- §/ek-r2-label§ --></div>
     </div>
     <div class="result-item">
       <div class="result-number">↑</div>
-      <div class="result-label"><!-- §ek-r3-label§ -->Groeiende online aanwezigheid<!-- §/ek-r3-label§ --></div>
+      <div class="result-label" data-en="Growing online presence"><!-- §ek-r3-label§ -->Groeiende online aanwezigheid<!-- §/ek-r3-label§ --></div>
     </div>
   </div>
 </div>
@@ -407,7 +406,11 @@ lb.addEventListener('click', e => { if (e.target === lb || e.target === lbImg) c
 document.addEventListener('keydown', e => { if (!lb.classList.contains('active')) return; if (e.key === 'Escape') closeLb(); if (e.key === 'ArrowRight') showNext(); if (e.key === 'ArrowLeft') showPrev(); });
 function setLang(lang) {
   document.querySelectorAll(".lang-toggle button").forEach((b,i) => b.classList.toggle("active",(lang==="nl"&&i===0)||(lang==="en"&&i===1)));
-  document.querySelectorAll("[data-nl]").forEach(el => { const t=el.getAttribute("data-"+lang); if(t) el.innerHTML=t; });
+  document.querySelectorAll("[data-nl],[data-en]").forEach(el => {
+    if (!el.dataset.nl) el.dataset.nl = el.innerHTML;
+    const t=el.getAttribute("data-"+lang);
+    if(t) el.innerHTML=t;
+  });
   document.documentElement.lang = lang;
 }
 function toggleMenu() { document.getElementById("mobile-nav").classList.toggle("open"); }

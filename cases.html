@@ -175,7 +175,7 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
 <div class="cases-hero">
   <span class="cases-label" data-nl="Ons werk" data-en="Our work">Ons werk</span>
   <h1 class="cases-title" data-nl="Cases" data-en="Cases">Cases</h1>
-  <p class="cases-sub"><!-- §cases-sub§ -->Elk merk heeft een eigen verhaal. Wij vertalen dat naar content die stopt, raakt en converteert.<!-- §/cases-sub§ --></p>
+  <p class="cases-sub" data-en="Every brand has its own story. We translate that into content that stops, touches and converts."><!-- §cases-sub§ -->Elk merk heeft een eigen verhaal. Wij vertalen dat naar content die stopt, raakt en converteert.<!-- §/cases-sub§ --></p>
 </div>
 
 <!-- CASES LIST -->
@@ -186,11 +186,11 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
       <img src="images/YoshiSushicase.jpg" alt="Yoshi Sushi">
     </div>
     <div class="case-body">
-      <span class="case-tag"><!-- §cases-ys-tag§ -->Horeca · Content Creation | Social Media Managment<!-- §/cases-ys-tag§ --></span>
+      <span class="case-tag" data-en="Hospitality · Social Media Management"><!-- §cases-ys-tag§ -->Horeca · Content Creation | Social Media Managment<!-- §/cases-ys-tag§ --></span>
       <h2 class="case-client">Yoshi Sushi</h2>
       <p class="case-place">Gouda</p>
-      <p class="case-desc"><!-- §cases-ys-desc§ -->Van nul naar een complete online uitstraling.<!-- §/cases-ys-desc§ --></p>
-      <span class="case-cta">Bekijk case <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      <p class="case-desc" data-en="From zero to a recognizable social media brand — content that truly captures the atmosphere of the restaurant."><!-- §cases-ys-desc§ -->Van nul naar een complete online uitstraling.<!-- §/cases-ys-desc§ --></p>
+      <span class="case-cta" data-en="View case →">Bekijk case <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
     </div>
   </a>
 
@@ -199,29 +199,29 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
       <img src="" alt="EK Beauty Clinic" id="ek-card-img" style="display:none;width:100%;height:100%;object-fit:cover" data-edit="cases-ek-img">
     </div>
     <div class="case-body">
-      <span class="case-tag"><!-- §cases-ek-tag§ -->Beauty · Content Creation | Social Media Managment<!-- §/cases-ek-tag§ --></span>
+      <span class="case-tag" data-en="Beauty · Social Media Management"><!-- §cases-ek-tag§ -->Beauty · Content Creation | Social Media Managment<!-- §/cases-ek-tag§ --></span>
       <h2 class="case-client">EK Beauty Clinic</h2>
       <p class="case-place">Den Haag</p>
-      <p class="case-desc"><!-- §cases-ek-desc§ -->Een verzorgd merk dat klanten aantrekt — content die de kwaliteit van de kliniek laat zien.<!-- §/cases-ek-desc§ --></p>
-      <span class="case-cta">Bekijk case <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      <p class="case-desc" data-en="A polished brand that attracts clients — content that showcases the quality of the clinic."><!-- §cases-ek-desc§ -->Een verzorgd merk dat klanten aantrekt — content die de kwaliteit van de kliniek laat zien.<!-- §/cases-ek-desc§ --></p>
+      <span class="case-cta" data-en="View case →">Bekijk case <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
     </div>
   </a>
 
   <div class="case-row case-soon">
     <div class="case-img soon-img"></div>
     <div class="case-body">
-      <span class="case-tag">Binnenkort</span>
-      <h2 class="case-client soon-client">Nieuwe case</h2>
-      <span class="case-cta muted">In aantocht →</span>
+      <span class="case-tag" data-en="Coming soon">Binnenkort</span>
+      <h2 class="case-client soon-client" data-en="New case">Nieuwe case</h2>
+      <span class="case-cta muted" data-en="Coming soon →">In aantocht →</span>
     </div>
   </div>
 
   <div class="case-row case-soon">
     <div class="case-img soon-img"></div>
     <div class="case-body">
-      <span class="case-tag">Binnenkort</span>
-      <h2 class="case-client soon-client">Nieuwe case</h2>
-      <span class="case-cta muted">In aantocht →</span>
+      <span class="case-tag" data-en="Coming soon">Binnenkort</span>
+      <h2 class="case-client soon-client" data-en="New case">Nieuwe case</h2>
+      <span class="case-cta muted" data-en="Coming soon →">In aantocht →</span>
     </div>
   </div>
 
@@ -250,7 +250,11 @@ lb.addEventListener('click', e => { if (e.target === lb || e.target === lbImg) c
 document.addEventListener('keydown', e => { if (!lb.classList.contains('active')) return; if (e.key === 'Escape') closeLb(); if (e.key === 'ArrowRight') showNext(); if (e.key === 'ArrowLeft') showPrev(); });
 function setLang(lang) {
   document.querySelectorAll(".lang-toggle button").forEach((b,i) => b.classList.toggle("active",(lang==="nl"&&i===0)||(lang==="en"&&i===1)));
-  document.querySelectorAll("[data-nl]").forEach(el => { const t=el.getAttribute("data-"+lang); if(t) el.innerHTML=t; });
+  document.querySelectorAll("[data-nl],[data-en]").forEach(el => {
+    if (!el.dataset.nl) el.dataset.nl = el.innerHTML;
+    const t=el.getAttribute("data-"+lang);
+    if(t) el.innerHTML=t;
+  });
   document.documentElement.lang = lang;
 }
 function toggleMenu() { document.getElementById("mobile-nav").classList.toggle("open"); }
