@@ -378,7 +378,7 @@ async function renderEK() {
     imgFieldHTML(fp,'ek-split','Feed / Instagram foto',extractImgSrc(h,'ek-split'),px) +
     imgFieldHTML(fp,'ek-full2','Brede foto 2',extractImgSrc(h,'ek-full2'),px) +
     '<div class="section-heading">Cases kaart</div>' +
-    fieldHTML(fpC,'cases-ek-tag','Tag op de cases overzichtspagina',false,extract(hc,'cases-ek-tag').replace(/&middot;/g,\'\u00b7\')) +
+    fieldHTML(fpC,'cases-ek-tag','Tag op de cases overzichtspagina',false,extract(hc,"cases-ek-tag").replace(/&middot;/g,"\u00b7")) +
     fieldHTML(fpC,'cases-ek-desc','Beschrijving op de cases overzichtspagina',true,extract(hc,'cases-ek-desc')) +
     '<div style="height:2rem"></div>';
 }
