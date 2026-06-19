@@ -48,78 +48,67 @@ nav {
 
 /* HERO */
 #hero {
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  background: var(--bg);
-  overflow: hidden;
   padding-top: 64px;
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #F0EBE3 0%, #E8E0D5 50%, #EDE5D8 100%);
+  z-index: 0;
 }
 .hero-left {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 80px 6vw 80px 8vw;
+  position: relative; z-index: 2;
+  flex: 0 0 44%;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 80px 5vw 80px 6vw;
+  background: transparent;
+  color: var(--dark);
+}
+.hero-right-photo {
+  flex: 1;
   position: relative;
-  z-index: 2;
+  overflow: hidden;
+  background-color: #EDE8DF;
 }
-.hero-eyebrow {
-  font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--warm); margin-bottom: 2rem; font-weight: 400;
+/* Seam fade: starts just before the photo edge, wide enough to fully hide the line */
+.hero-fade-overlay {
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 43%;
+  width: 28%;
+  background: linear-gradient(to right,
+    #EDE8DF 0%,
+    #EDE8DF 15%,
+    rgba(237,232,223,0.6) 55%,
+    rgba(237,232,223,0) 100%
+  );
+  z-index: 3;
+  pointer-events: none;
 }
-#hero h1 {
-  font-family: "Outfit", sans-serif;
-  font-size: clamp(2.8rem, 5vw, 5.2rem);
-  font-weight: 200; line-height: 1.05;
-  letter-spacing: -0.02em; color: var(--dark);
-  margin-bottom: 1.75rem;
-}
-#hero h1 span:last-child { font-weight: 500; }
-.hero-sub {
-  font-size: 15px; color: var(--mid); max-width: 400px;
-  line-height: 1.8; margin-bottom: 2.5rem; font-weight: 300;
-}
+.hero-right { display: none !important; }
+.hero-overlay { display: none; }
+.hero-mobile-top-fade { display: none; }
+.hero-mobile-bottom-fade { display: none; }
+.hero-eyebrow { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm); margin-bottom: 1.5rem; font-weight: 400; }
+h1 { font-family: "Outfit", sans-serif; font-size: clamp(32px, 4vw, 52px); font-weight: 300; line-height: 1.2; margin-bottom: 1.5rem; letter-spacing: 0.02em; }
+h1 em { font-style: normal; font-weight: 200; letter-spacing: 0.04em; }
+.hero-sub { font-size: 15px; color: var(--mid); max-width: 460px; line-height: 1.8; margin-bottom: 2.5rem; font-weight: 300; }
 .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+#hero h1 { color: var(--dark); }
+.btn { display: inline-block; padding: 13px 30px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; border: 1px solid var(--dark); color: var(--dark); background: transparent; cursor: pointer; transition: all 0.25s; font-family: "Space Grotesk", sans-serif; font-weight: 400; }
+.btn:hover { background: var(--dark); color: var(--white); }
+#hero .btn { border-color: var(--dark); color: var(--dark); }
+#hero .btn:hover { background: var(--dark); color: white; border-color: var(--dark); }
+#hero .btn-filled { background: var(--dark); color: white; border-color: var(--dark); }
+#hero .btn-filled:hover { background: #333; }
+.btn-filled { background: var(--dark); color: var(--white); }
+.btn-filled:hover { background: #333; border-color: #333; }
 
-/* MOSAIC */
-.hero-mosaic {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(4, 1fr);
-  gap: 4px;
-  height: calc(100vh - 64px);
-  overflow: hidden;
-}
-.mosaic-img {
-  overflow: hidden;
-  background: var(--bg2);
-}
-.mosaic-img img {
-  width: 100%; height: 100%;
-  object-fit: cover; display: block;
-  transition: transform 0.7s ease;
-}
-.hero-mosaic:hover .mosaic-img img { transform: scale(1.03); }
-.mosaic-img:nth-child(1) { grid-column: 1; grid-row: 1 / 3; }
-.mosaic-img:nth-child(2) { grid-column: 2; grid-row: 1; }
-.mosaic-img:nth-child(3) { grid-column: 3; grid-row: 1 / 3; }
-.mosaic-img:nth-child(4) { grid-column: 2; grid-row: 2; }
-.mosaic-img:nth-child(5) { grid-column: 1; grid-row: 3; }
-.mosaic-img:nth-child(6) { grid-column: 2 / 4; grid-row: 3; }
-.mosaic-img:nth-child(7) { grid-column: 1 / 3; grid-row: 4; }
-.mosaic-img:nth-child(8) { grid-column: 3; grid-row: 4; }
-
-/* hide old overlays */
-.hero-fade-overlay, .hero-mobile-top-fade, .hero-mobile-bottom-fade,
-.hero-right-photo, .hero-right { display: none !important; }
-
-@media (max-width: 900px) {
-  #hero { grid-template-columns: 1fr; min-height: auto; }
-  .hero-left { padding: 60px 6vw 40px; }
-  .hero-mosaic { height: 70vw; grid-template-rows: repeat(4, 1fr); }
-}
-
-/* /* MARQUEE */
+/* MARQUEE */
 .marquee-wrap { background: var(--dark); overflow: hidden; padding: 13px 0; }
 .marquee-track { display: flex; animation: marquee 22s linear infinite; white-space: nowrap; }
 .marquee-track span { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; padding: 0 2.5rem; color: rgba(255,255,255,0.45); font-weight: 300; }
@@ -467,27 +456,26 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
 </a>
 
 <!-- HERO -->
-<section id="hero">
+<section id="hero" style="position:relative;display:flex;overflow:hidden;background:#EDE8DF;">
+  <!-- Left: cream panel, same color as photo background -->
   <div class="hero-left">
     <p class="hero-eyebrow fade">Fashion &nbsp;·&nbsp; Beauty &nbsp;·&nbsp; Lifestyle &nbsp;·&nbsp; Hospitality</p>
     <h1 class="fade">
-      <span data-nl="Eén shootdag." data-en="One shoot day." style="font-weight:200">Eén shootdag.</span><br>
-      <span data-nl="Een volledige maand content." data-en="A full month of content.">Een volledige maand content.</span>
+      <span data-nl="Eén shootdag." data-en="We create a month of content" style="font-weight:200">Eén shootdag.</span><br>
+      <span data-nl="Een volledige maand content." data-en="in one shoot day.">Een volledige maand content.</span>
     </h1>
-    <p class="hero-sub fade" data-nl="Wij creëren content die jouw merk laat groeien — van strategie tot publicatie." data-en="We create content that grows your brand — from strategy to publication.">Wij creëren content die jouw merk laat groeien — van strategie tot publicatie.</p>
+    <p class="hero-sub fade" data-nl="Wij creëren, plannen en beheren professionele foto en videocontent voor bedrijven, van shoot en editing tot posten en strategie." data-en="We create, plan and manage professional photo and video content for businesses, from shoot and editing to posting and strategy.">Wij creëren, plannen en beheren professionele foto en videocontent voor bedrijven, van shoot en editing tot posten en strategie.</p>
     <div class="hero-btns fade">
       <a href="#packages" class="btn btn-filled" data-nl="Bekijk pakketten" data-en="View packages">Bekijk pakketten</a>
     </div>
   </div>
-  <div class="hero-mosaic">
-    <div class="mosaic-img"><img src="images/feed-ek.jpg" alt="" loading="eager"></div>
-    <div class="mosaic-img"><img src="images/DSC03050.jpg" alt="" loading="eager"></div>
-    <div class="mosaic-img"><img src="images/YoshiSushicase.jpg" alt="" loading="eager"></div>
-    <div class="mosaic-img"><img src="images/dermea-151.jpg" alt="" loading="eager"></div>
-    <div class="mosaic-img"><img src="images/Ek-14.jpg" alt="" loading="eager"></div>
-    <div class="mosaic-img"><img src="images/DSC00070.jpg" alt="" loading="eager"></div>
-    <div class="mosaic-img"><img src="images/feed-yoshi.jpeg" alt="" loading="eager"></div>
-    <div class="mosaic-img"><img src="images/dermea-152.jpg" alt="" loading="eager"></div>
+  <!-- Right: photo at natural quality (only fills 56% width = no zoom) -->
+  <!-- Gradient fade at seam between cream and photo -->
+  <div class="hero-fade-overlay"></div>
+  <div class="hero-mobile-top-fade"></div>
+  <div class="hero-mobile-bottom-fade"></div>
+  <div class="hero-right-photo">
+    <img src="images/hero-lucy.jpg" alt="Lusin Agency" style="width:100%;height:100%;object-fit:contain;object-position:right center;animation:lucyFadeIn 1.6s cubic-bezier(0.4,0,0.2,1) 0.4s both;"/>
   </div>
 </section>
 
@@ -722,6 +710,27 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
       <div class="addon-row"><span data-nl="Extra Reel on the set tot 60 seconden" data-en="Extra Reel on the set up to 60 seconds">Extra Reel on the set tot 60 seconden</span><span>&#8364; 125</span></div>
       <div class="addon-row"><span data-nl="Extra custom Story" data-en="Extra custom Story">Extra custom Story</span><span>&#8364; 20</span></div>
       <p class="addon-note" data-nl="Add-ons worden vooraf afgesproken en op de shoot dag opgenomen." data-en="Add-ons are agreed in advance and captured on the shoot day.">Add-ons worden vooraf afgesproken en op de shoot dag opgenomen.</p>
+    </div>
+  </div>
+</section>
+
+  <!-- SELECTED COLLABORATIONS -->
+<section id="collaborations" style="background:var(--dark);padding:90px 6vw;">
+  <p class="fade" style="font-size:13px;color:rgba(255,255,255,0.35);margin-top:0.75rem;max-width:480px;line-height:1.8;font-weight:300;" data-nl="Een selectie van hoe beheerde pagina's eruitzien. Fotografie, editing en publicatie — volledig door Lusin Agency." data-en="A selection of what managed pages look like. Photography, editing and publication — fully by Lusin Agency.">Een selectie van hoe beheerde pagina's eruitzien. Fotografie, editing en publicatie — volledig door Lusin Agency.</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:900px;margin:3rem auto 0;">
+    <div class="fade" style="position:relative;overflow:hidden;height:500px;">
+      <img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/feed-ek.jpg" class="collab-img" onclick="document.getElementById('lbImg').src=this.src;document.getElementById('lightbox').classList.add('open')" alt="EK Beauty Clinic" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;filter:brightness(0.92);">
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:2rem;background:linear-gradient(to top,rgba(21,18,16,0.9),transparent);">
+        <p style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(181,149,110,0.8);margin-bottom:0.3rem;">EK Beauty Clinic</p>
+        <p style="font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:0.1em;text-transform:uppercase;">Schoonheidskliniek · Den Haag</p>
+      </div>
+    </div>
+    <div class="fade" style="position:relative;overflow:hidden;height:500px;">
+      <img src="https://raw.githubusercontent.com/studiolusin-bit/lusin-agency/main/images/feed-yoshi.jpeg" class="collab-img" onclick="document.getElementById('lbImg').src=this.src;document.getElementById('lightbox').classList.add('open')" alt="Yoshi Sushi" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;filter:brightness(0.92);">
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:2rem;background:linear-gradient(to top,rgba(21,18,16,0.9),transparent);">
+        <p style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(181,149,110,0.8);margin-bottom:0.3rem;">Yoshi Sushi</p>
+        <p style="font-size:11px;color:rgba(255,255,255,0.4);letter-spacing:0.1em;text-transform:uppercase;">Restaurant · Gouda</p>
+      </div>
     </div>
   </div>
 </section>
