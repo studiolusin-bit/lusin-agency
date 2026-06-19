@@ -475,6 +475,14 @@ async function uploadImg(ev, editKey, fp, prefix) {
     const newSrc = prefix + gp;
     cache[fp].content = injectImg(cache[fp].content, editKey, newSrc);
     dirty[fp] = cache[fp].content;
+    // Auto-sync feed/split images to cases overview card
+    const syncMap = {'ys-split':'cases-ys-img','ek-split':'cases-ek-img'};
+    if (syncMap[editKey]) {
+      const casesFp = 'cases.html';
+      if (!cache[casesFp]) await ghGet(casesFp);
+      cache[casesFp].content = injectImg(cache[casesFp].content, syncMap[editKey], gp);
+      dirty[casesFp] = cache[casesFp].content;
+    }
     const prev = document.getElementById(`prev-${editKey}`);
     if (prev) { prev.src = URL.createObjectURL(file); prev.className='ip'; }
     st.textContent = `✓ ${file.name}`; st.style.color='var(--green)';
