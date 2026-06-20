@@ -214,8 +214,12 @@ function injectImg(html, editKey, src) {
   let r = html.replace(new RegExp(`(<img[^>]*data-edit="${editKey}"[^>]*src=")([^"]*)(")`), `$1${src}$3`);
   r = r.replace(new RegExp(`(<img[^>]*src=")([^"]*)("[^>]*data-edit="${editKey}")`), `$1${src}$3`);
   if (src) {
+    // Remove standalone display:none
     r = r.replace(new RegExp(`(<img[^>]*data-edit="${editKey}"[^>]*) style="display:none"`), `$1`);
     r = r.replace(new RegExp(`(<img[^>]*) style="display:none"([^>]*data-edit="${editKey}")`), `$1$2`);
+    // Remove display:none; when combined with other styles
+    r = r.replace(new RegExp(`(<img[^>]*data-edit="${editKey}"[^>]*) style="display:none;([^"]+)"`), `$1 style="$2"`);
+    r = r.replace(new RegExp(`(<img[^>]*) style="display:none;([^"]+)"([^>]*data-edit="${editKey}")`), `$1 style="$2"$3`);
   }
   return r;
 }
