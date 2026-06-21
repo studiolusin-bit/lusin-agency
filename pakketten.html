@@ -658,6 +658,40 @@ const obs = new IntersectionObserver(entries=>{
   entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
 },{threshold:0.1});
 document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
+
+
+  function setLang(lang) {
+  document.querySelectorAll(".lang-toggle button").forEach((b,i) => b.classList.toggle("active",(lang==="nl"&&i===0)||(lang==="en"&&i===1)));
+  document.querySelectorAll("[data-nl],[data-en]").forEach(el => {
+    if (!el.dataset.nl) el.dataset.nl = el.innerHTML;
+    const t=el.getAttribute("data-"+lang);
+    if(t) el.innerHTML=t;
+  });
+  document.documentElement.lang = lang;
+}
+function toggleMenu() { document.getElementById("mobile-nav").classList.toggle("open"); }
+function closeMenu() { document.getElementById("mobile-nav").classList.remove("open"); }
+function loadHero(input) {
+  const r=new FileReader();
+  r.onload=e=>{ const img=document.getElementById("hero-img"); img.src=e.target.result; img.style.display="block"; document.getElementById("hero-zone").style.display="none"; };
+  r.readAsDataURL(input.files[0]);
+}
+function loadAbout(input) {
+  const r=new FileReader();
+  r.onload=e=>{ const img=document.getElementById("about-img"); img.src=e.target.result; img.style.display="block"; document.getElementById("about-ph").style.display="none"; };
+  r.readAsDataURL(input.files[0]);
+}
+function triggerUpload(i) { document.getElementById("u"+i).click(); }
+function loadCell(input,i) {
+  const r=new FileReader();
+  r.onload=e=>{ const c=document.getElementById("c"+i); c.innerHTML="<img src='"+e.target.result+"' style='width:100%;height:100%;object-fit:cover;display:block;'>"; };
+  r.readAsDataURL(input.files[0]);
+}
+function toggleFaq(el) { el.closest(".faq-item").classList.toggle("open"); }
+
+
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("visible");obs.unobserve(e.target);}}),{threshold:0.08});
+document.querySelectorAll(".fade").forEach(el=>obs.observe(el));
 </script>
 
 </body></html>
