@@ -398,62 +398,8 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
 @keyframes lucyFadeIn { from { opacity:0; transform:scale(1.03); } to { opacity:1; transform:scale(1); } }
 /* hero-gradient-overlay removed */
 
-/* BIG PKG */
-
-/* ===== BIG PACKAGE CARDS ===== */
-.pkg-section-header{padding:60px 6vw 0;background:var(--dark)}
-.pkg-section-header .section-label{color:rgba(200,185,168,.7);margin-bottom:.75rem}
-.pkg-section-header h2{font-family:"Outfit",sans-serif;font-size:clamp(28px,3vw,42px);font-weight:300;color:var(--white);letter-spacing:.02em;margin-bottom:0}
-.pkg-big-grid{display:grid;grid-template-columns:repeat(3,1fr);background:var(--dark)}
-.pkg-big-card{padding:52px 48px 60px;display:flex;flex-direction:column;border-right:.5px solid rgba(255,255,255,.1);border-top:.5px solid rgba(255,255,255,.08)}
-.pkg-big-card:last-child{border-right:none}
-.pkg-big-card.pkg-featured{background:rgba(200,185,168,.1);border-right:.5px solid rgba(255,255,255,.15)}
-.pkg-card-num{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:20px;font-weight:500}
-.pkg-card-name{font-family:"Outfit",sans-serif;font-size:clamp(30px,3.2vw,50px);font-weight:200;color:var(--white);line-height:1;letter-spacing:.04em;margin-bottom:10px}
-.pkg-card-sub{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:rgba(200,185,168,.6);margin-bottom:36px;font-weight:400}
-.pkg-card-price{font-family:"Outfit",sans-serif;font-size:clamp(44px,4.5vw,68px);font-weight:300;color:var(--white);line-height:1;margin-bottom:4px}
-.pkg-card-price .pkg-pm{font-size:18px;color:rgba(255,255,255,.45);margin-left:4px;font-weight:300;letter-spacing:.04em}
-.pkg-card-note{font-size:11px;color:rgba(255,255,255,.3);margin-bottom:36px;letter-spacing:.04em}
-.pkg-card-features{list-style:none;padding:0;margin:0 0 auto;border-top:.5px solid rgba(255,255,255,.1);padding-top:28px}
-.pkg-card-features li{font-size:13px;color:rgba(255,255,255,.7);padding:10px 0;border-bottom:.5px solid rgba(255,255,255,.06);line-height:1.4;padding-left:16px;position:relative}
-.pkg-card-features li::before{content:"—";position:absolute;left:0;color:rgba(200,185,168,.5)}
-.pkg-cta-btn{display:inline-flex;align-items:center;gap:8px;margin-top:40px;padding:15px 30px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:var(--white);text-decoration:none;font-size:12px;letter-spacing:.12em;text-transform:uppercase;transition:all .25s;font-family:inherit}
-.pkg-cta-btn:hover{background:var(--white);color:var(--dark)}
-.pkg-featured .pkg-cta-btn{background:rgba(200,185,168,.15);border-color:rgba(200,185,168,.4)}
-.pkg-featured .pkg-cta-btn:hover{background:rgba(200,185,168,1);color:var(--dark);border-color:rgba(200,185,168,1)}
-/* Shoot section big style */
-.shoot-big{background:var(--light);padding:80px 6vw 100px}
-.shoot-big-header .section-label{margin-bottom:.75rem}
-.shoot-big-header h2{font-family:"Outfit",sans-serif;font-size:clamp(28px,3vw,42px);font-weight:300;color:var(--dark);letter-spacing:.02em;margin-bottom:48px}
-.shoot-big-grid{display:grid;grid-template-columns:1fr 1fr;gap:3px;margin-bottom:48px}
-.shoot-big-card{padding:52px 48px 56px;display:flex;flex-direction:column;background:var(--dark)}
-.shoot-big-card.shoot-light-card{background:rgba(26,26,26,.06)}
-.shoot-big-card .pkg-card-num{color:rgba(255,255,255,.35)}
-.shoot-big-card.shoot-light-card .pkg-card-num{color:rgba(26,26,26,.35)}
-.shoot-big-card .pkg-card-name{color:var(--white)}
-.shoot-big-card.shoot-light-card .pkg-card-name{color:var(--dark)}
-.shoot-big-card .pkg-card-sub{color:rgba(200,185,168,.6)}
-.shoot-big-card.shoot-light-card .pkg-card-sub{color:rgba(26,26,26,.45)}
-.shoot-big-card .pkg-card-price{color:var(--white)}
-.shoot-big-card.shoot-light-card .pkg-card-price{color:var(--dark)}
-.shoot-big-card .pkg-card-price .pkg-pm{color:rgba(255,255,255,.45)}
-.shoot-big-card.shoot-light-card .pkg-card-price .pkg-pm{color:rgba(26,26,26,.4)}
-.shoot-big-card .pkg-card-features{border-top:.5px solid rgba(255,255,255,.1)}
-.shoot-big-card.shoot-light-card .pkg-card-features{border-top:.5px solid rgba(26,26,26,.12)}
-.shoot-big-card .pkg-card-features li{color:rgba(255,255,255,.7);border-bottom:.5px solid rgba(255,255,255,.06)}
-.shoot-big-card.shoot-light-card .pkg-card-features li{color:rgba(26,26,26,.75);border-bottom:.5px solid rgba(26,26,26,.08)}
-.shoot-big-card.shoot-light-card .pkg-card-features li::before{color:rgba(26,26,26,.3)}
-.shoot-big-card .pkg-cta-btn{margin-top:36px}
-.shoot-big-card.shoot-light-card .pkg-cta-btn{background:rgba(26,26,26,.06);border-color:rgba(26,26,26,.25);color:var(--dark)}
-.shoot-big-card.shoot-light-card .pkg-cta-btn:hover{background:var(--dark);color:var(--white)}
-.shoot-addons{padding:0 6vw;background:var(--light);padding-bottom:0}
-.shoot-addons h3{font-family:"Outfit",sans-serif;font-size:18px;font-weight:300;color:var(--dark);margin-bottom:20px;letter-spacing:.04em}
-.addons-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1px;background:rgba(26,26,26,.08)}
-.addon-item{background:var(--light);padding:20px 24px;font-size:13px;color:var(--dark)}
-.addon-item strong{display:block;font-weight:500;margin-bottom:4px}
-.addon-item span{color:rgba(26,26,26,.5);font-size:12px}
-@media(max-width:900px){.pkg-big-grid{grid-template-columns:1fr}.pkg-big-card{border-right:none;border-bottom:.5px solid rgba(255,255,255,.1)}.shoot-big-grid{grid-template-columns:1fr}.pkg-big-card,.shoot-big-card{padding:44px 32px 48px}}
-@media(max-width:640px){.pkg-big-card,.shoot-big-card{padding:36px 24px 40px}}
+/* PKG SIZE UP */
+.packages-grid{gap:0}.pkg-card{padding:48px 44px 52px}.pkg-name{font-size:clamp(28px,3vw,44px);letter-spacing:.04em}.pkg-price{font-size:clamp(44px,5vw,68px);font-weight:300}.pkg-period{font-size:18px}.pkg-get-in-touch{display:inline-flex;align-items:center;margin-top:32px;padding:14px 30px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:var(--white);text-decoration:none;font-size:12px;letter-spacing:.12em;text-transform:uppercase;transition:all .25s;font-family:inherit}.pkg-get-in-touch:hover{background:var(--white);color:var(--dark)}.pkg-card.featured .pkg-get-in-touch{background:rgba(200,185,168,.15);border-color:rgba(200,185,168,.4)}.pkg-card.featured .pkg-get-in-touch:hover{background:rgba(200,185,168,1);color:var(--dark)}.shoot-card{padding:40px 36px 44px}.shoot-name{font-size:clamp(24px,2.5vw,38px)}.shoot-price{font-size:clamp(36px,4vw,54px);font-weight:300}
 
 </style>
 <style>
@@ -535,115 +481,156 @@ footer { border-top: 0.5px solid var(--rule); padding: 1.75rem 5vw; display: fle
 </div>
 
 <section id="packages">
+  <div class="container">
+    <p class="section-label fade" data-nl="Maandelijks abonnement" data-en="Monthly subscription">Maandelijks abonnement</p>
+    <h2 class="fade" data-nl="De <em>pakketten</em>" data-en="The <em>subscriptions</em>">De <em>pakketten</em></h2>
+    <hr class="rule">
+    <div class="packages-grid">
+
+      <div class="pkg-card fade">
+        <div class="pkg-name">Light</div>
+        <div class="pkg-sub">Starter</div>
+        <div class="pkg-price">&#8364; <!-- §pkg-light-price§ -->950<!-- §/pkg-light-price§ --></div>
+<div style="font-size:10px;color:var(--warm);letter-spacing:0.08em;margin-bottom:0.5rem;" data-nl="excl. BTW" data-en="excl. VAT">excl. BTW</div>
+        <div class="pkg-period" data-nl="per maand, min. 4 maanden" data-en="per month, min. 4 months">per maand, min. 4 maanden</div>
+        <hr class="pkg-div">
+        <ul class="pkg-bullets">
+          <li data-nl="8 posts per maand" data-en="8 posts per month">8 posts per maand</li>
+          <li data-nl="4 Reels per maand" data-en="4 Reels per month">4 Reels per maand</li>
+          <li data-nl="4 foto of carousels" data-en="4 photos or carousels">4 foto of carousels</li>
+          <li data-nl="2 posts per week" data-en="2 posts per week">2 posts per week</li>
+          <li data-nl="Shoot om de 2 maanden, alles in 1 dag" data-en="Shoot every 2 months, all in 1 day">Shoot om de 2 maanden, alles in 1 dag</li>
+          <li data-nl="Publicatie op 2 kanalen naar keuze" data-en="Published on 2 channels of your choice">Publicatie op 2 kanalen naar keuze</li>
+          <li data-nl="Stories niet inbegrepen" data-en="Stories not included">Stories niet inbegrepen</li>
+        </ul>
+        <div class="pkg-delivery" data-nl="Content wordt geleverd binnen 7 werkdagen na goedkeuring, waarna de planning en content kalender voor de komende 4 weken worden opgesteld." data-en="Content is delivered within 7 working days after approval, after which the planning and content calendar for the next 4 weeks will be prepared.">Content wordt geleverd binnen 7 werkdagen na goedkeuring, waarna de planning en content kalender voor de komende 4 weken worden opgesteld.</div>
+        <div class="pkg-footer-label" data-nl="Geschikt voor" data-en="Best for">Geschikt voor</div>
+        <div class="pkg-footer-text" data-nl="Als je weet dat je bedrijf meer aandacht verdient, maar het online steeds blijft liggen, dan beginnen we hier." data-en="If your business deserves to be seen but you're barely posting, this is where we start.">Als je weet dat je bedrijf meer aandacht verdient, maar het online steeds blijft liggen, dan beginnen we hier.</div>
+      </div>
+    <a href="contact.html?pakket=light" class="pkg-get-in-touch">Get in touch →</a>
+
+      <div class="pkg-card featured fade">
+        <div class="pkg-badge" data-nl="Aanbevolen" data-en="Recommended">Aanbevolen</div>
+        <div class="pkg-name">Standard</div>
+        <div class="pkg-sub" data-nl="Meest gekozen" data-en="Most popular">Meest gekozen</div>
+        <div class="pkg-price">&#8364; <!-- §pkg-standard-price§ -->1.250<!-- §/pkg-standard-price§ --></div>
+<div style="font-size:10px;color:rgba(181,149,110,0.8);letter-spacing:0.08em;margin-bottom:0.5rem;" data-nl="excl. BTW" data-en="excl. VAT">excl. BTW</div>
+        <div class="pkg-period" data-nl="per maand, min. 3 maanden" data-en="per month, min. 3 months">per maand, min. 3 maanden</div>
+        <hr class="pkg-div">
+        <ul class="pkg-bullets">
+          <li data-nl="10 posts per maand" data-en="10 posts per month">10 posts per maand</li>
+          <li data-nl="6 Reels per maand" data-en="6 Reels per month">6 Reels per maand</li>
+          <li data-nl="4 foto of carousels" data-en="4 photos or carousels">4 foto of carousels</li>
+          <li data-nl="2 tot 3 posts per week" data-en="2 to 3 posts per week">2 tot 3 posts per week</li>
+          <li data-nl="Maandelijkse shoot, circa 3 uur" data-en="Monthly shoot, approx. 3 hours">Maandelijkse shoot, circa 3 uur</li>
+          <li data-nl="Publicatie op 2 kanalen naar keuze" data-en="Published on 2 channels of your choice">Publicatie op 2 kanalen naar keuze</li>
+          <li data-nl="5 custom Stories per maand" data-en="5 custom Stories per month">5 custom Stories per maand</li>
+        </ul>
+        <div class="pkg-delivery" data-nl="Content wordt geleverd binnen 7 werkdagen na goedkeuring, waarna de planning en content kalender voor de komende 4 weken worden opgesteld." data-en="Content is delivered within 7 working days after approval, after which the planning and content calendar for the next 4 weeks will be prepared.">Content wordt geleverd binnen 7 werkdagen na goedkeuring, waarna de planning en content kalender voor de komende 4 weken worden opgesteld.</div>
+        <div class="pkg-footer-label" data-nl="Geschikt voor" data-en="Best for">Geschikt voor</div>
+        <div class="pkg-footer-text" data-nl="Als je online aanwezig bent, maar je content nog niet volledig uitstraalt waar jouw bedrijf voor staat, dan is dit voor jou." data-en="If you're posting but not consistently, and your content doesn't yet reflect the quality of what you do, this one's for you.">Als je online aanwezig bent, maar je content nog niet volledig uitstraalt waar jouw bedrijf voor staat, dan is dit voor jou.</div>
+      </div>
+    <a href="contact.html?pakket=standard" class="pkg-get-in-touch">Get in touch →</a>
+
+      <div class="pkg-card fade">
+        <div class="pkg-name">Full Service</div>
+        <div class="pkg-sub">Maximaal</div>
+        <div class="pkg-price">&#8364; <!-- §pkg-full-price§ -->1.450<!-- §/pkg-full-price§ --></div>
+<div style="font-size:10px;color:var(--warm);letter-spacing:0.08em;margin-bottom:0.5rem;" data-nl="excl. BTW" data-en="excl. VAT">excl. BTW</div>
+        <div class="pkg-period" data-nl="per maand, min. 3 maanden" data-en="per month, min. 3 months">per maand, min. 3 maanden</div>
+        <hr class="pkg-div">
+        <ul class="pkg-bullets">
+          <li data-nl="12 tot 13 posts per maand" data-en="12 to 13 posts per month">12 tot 13 posts per maand</li>
+          <li data-nl="8 Reels per maand" data-en="8 Reels per month">8 Reels per maand</li>
+          <li data-nl="4 tot 5 foto of carousels" data-en="4 to 5 photos or carousels">4 tot 5 foto of carousels</li>
+          <li data-nl="3 posts per week" data-en="3 posts per week">3 posts per week</li>
+          <li data-nl="Maandelijkse shoot, circa 4 uur" data-en="Monthly shoot, approx. 4 hours">Maandelijkse shoot, circa 4 uur</li>
+          <li data-nl="Publicatie op 3 kanalen naar keuze" data-en="Published on 3 channels of your choice">Publicatie op 3 kanalen naar keuze</li>
+          <li data-nl="8 custom Stories per maand" data-en="8 custom Stories per month">8 custom Stories per maand</li>
+          <li data-nl="Maandelijks resultaten overzicht" data-en="Monthly performance report">Maandelijks resultaten overzicht</li>
+        </ul>
+        <div class="pkg-delivery" data-nl="Content wordt geleverd binnen 7 werkdagen na goedkeuring, waarna de planning en content kalender voor de komende 4 weken worden opgesteld." data-en="Content is delivered within 7 working days after approval, after which the planning and content calendar for the next 4 weeks will be prepared.">Content wordt geleverd binnen 7 werkdagen na goedkeuring, waarna de planning en content kalender voor de komende 4 weken worden opgesteld.</div>
+        <div class="pkg-footer-label" data-nl="Geschikt voor" data-en="Best for">Geschikt voor</div>
+        <div class="pkg-footer-text" data-nl="Als je jouw social media volledig wilt uitbesteden en je wilt focussen op je bedrijf, dan is dit voor jou." data-en="If you want to hand over your socials completely and focus on running your business, this one's for you.">Als je jouw social media volledig wilt uitbesteden en je wilt focussen op je bedrijf, dan is dit voor jou.</div>
+      </div>
+    <a href="contact.html?pakket=fullservice" class="pkg-get-in-touch">Get in touch →</a>
+
+    </div>
+  </div>
   
-    <h2 class="fade" data-nl="Kies jouw pakket" data-en="Choose your package">Kies jouw pakket</h2>
-  </div>
-  <div class="pkg-big-grid">
-    <div class="pkg-big-card">
-      <div class="pkg-card-num">Pakket 01</div>
-      <div class="pkg-card-name">LIGHT.</div>
-      <div class="pkg-card-sub">Voor altijd-on aanwezigheid</div>
-      <div class="pkg-card-price">€950<span class="pkg-pm">p/m</span></div>
-      <div class="pkg-card-note">Inclusief shoot om de 2 maanden</div>
-      <ul class="pkg-card-features">
-        <li>8 posts per maand</li>
-        <li>4 Reels per maand</li>
-        <li>4 foto of carousels</li>
-        <li>2 posts per week</li>
-        <li>Shoot om de 2 maanden, alles in 1 dag</li>
-        <li>Publicatie op 2 kanalen naar keuze</li>
-        <li>Stories niet inbegrepen</li>
-      </ul>
-      <a href="contact.html?pakket=light" class="pkg-cta-btn">Get in touch →</a>
+  <div style="padding:2rem 2.5rem;background:var(--bg2);border-top:0.5px solid var(--rule);">
+  <p style="font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--warm);margin-bottom:1.25rem;font-weight:400;" data-nl="Altijd inbegrepen in elk pakket" data-en="Always included in every package">Altijd inbegrepen in elk pakket</p>
+  <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:1rem;align-items:center;">
+  <div style="font-size:13px;color:var(--mid);font-weight:300;" data-nl="✓ Professionele shoot" data-en="✓ Professional shoot">✓ Professionele shoot</div>
+<div style="font-size:13px;color:var(--mid);font-weight:300;" data-nl="✓ Concept & moodboard" data-en="✓ Concept & moodboard">✓ Concept & moodboard</div>
+<div style="font-size:13px;color:var(--mid);font-weight:300;" data-nl="✓ Professionele bewerking" data-en="✓ Professional editing">✓ Professionele bewerking</div>
+<div style="font-size:13px;color:var(--mid);font-weight:300;" data-nl="✓ Captions & hashtags" data-en="✓ Captions & hashtags">✓ Captions & hashtags</div>
+<div style="font-size:13px;color:var(--mid);font-weight:300;" data-nl="✓ Content kalender" data-en="✓ Content calendar">✓ Content kalender</div>
+<div style="font-size:13px;color:var(--mid);font-weight:300;" data-nl="✓ Reiskosten inbegrepen" data-en="✓ Travel costs included">✓ Reiskosten inbegrepen</div>
+</div>
     </div>
-    <div class="pkg-big-card pkg-featured">
-      <div class="pkg-card-num">Pakket 02</div>
-      <div class="pkg-card-name">STANDARD.</div>
-      <div class="pkg-card-sub">Voor meer merkbeleving en bereik</div>
-      <div class="pkg-card-price">€1.250<span class="pkg-pm">p/m</span></div>
-      <div class="pkg-card-note">Inclusief maandelijkse shoot</div>
-      <ul class="pkg-card-features">
-        <li>10 posts per maand</li>
-        <li>6 Reels per maand</li>
-        <li>4 foto of carousels</li>
-        <li>2 tot 3 posts per week</li>
-        <li>Maandelijkse shoot, circa 3 uur</li>
-        <li>Publicatie op 2 kanalen naar keuze</li>
-        <li>5 custom Stories per maand</li>
-      </ul>
-      <a href="contact.html?pakket=standard" class="pkg-cta-btn">Get in touch →</a>
-    </div>
-    <div class="pkg-big-card">
-      <div class="pkg-card-num">Pakket 03</div>
-      <div class="pkg-card-name">FULL SERVICE.</div>
-      <div class="pkg-card-sub">Voor maximale impact en groei</div>
-      <div class="pkg-card-price">€1.450<span class="pkg-pm">p/m</span></div>
-      <div class="pkg-card-note">Inclusief uitgebreide maandelijkse shoot</div>
-      <ul class="pkg-card-features">
-        <li>12 tot 13 posts per maand</li>
-        <li>8 Reels per maand</li>
-        <li>4 tot 5 foto of carousels</li>
-        <li>3 posts per week</li>
-        <li>Maandelijkse shoot, circa 4 uur</li>
-        <li>Publicatie op 3 kanalen naar keuze</li>
-        <li>8 custom Stories per maand</li>
-        <li>Maandelijks resultaten overzicht</li>
-      </ul>
-      <a href="contact.html?pakket=fullservice" class="pkg-cta-btn">Get in touch →</a>
-    </div>
-  </div>
 </section>
+
 <section id="shoot">
-  <div class="shoot-big">
-    <div class="shoot-big-header">
-      <div class="section-label fade" data-nl="Eenmalig" data-en="One-time">Eenmalig</div>
-      <h2 class="fade" data-nl="Losse Content Shoot" data-en="Single Content Shoot">Losse Content Shoot</h2>
-    </div>
-    <div class="shoot-big-grid">
-      <div class="shoot-big-card shoot-light-card">
-        <div class="pkg-card-num">Mini Shoot</div>
-        <div class="pkg-card-name">MINI.</div>
-        <div class="pkg-card-sub">Snel en sterk contentpakket</div>
-        <div class="pkg-card-price">€450<span class="pkg-pm">eenmalig</span></div>
-        <div class="pkg-card-note">Intake + moodboard inbegrepen</div>
-        <ul class="pkg-card-features">
-          <li>Intake gesprek vooraf</li>
-          <li>Moodboard en shot list op maat</li>
-          <li>Professionele shoot op locatie</li>
-          <li>Bewerking en levering in 9:16 en 4:5</li>
-          <li>Captions en hashtags</li>
-          <li>15 professioneel bewerkte fotos</li>
-          <li>3 bewerkte Reels tot 60 seconden</li>
+  <div class="container">
+    <p class="section-label fade" data-nl="Eenmalige boeking" data-en="One-time booking">Eenmalige boeking</p>
+    <h2 class="fade" data-nl="Losse <em>Content Shoot</em>" data-en="Single <em>Content Shoot</em>">Losse <em>Content Shoot</em></h2>
+    <hr class="rule">
+    <p class="shoot-intro fade" data-nl="Boek een professionele content shoot zonder abonnement. Je zit nergens aan vast." data-en="Book a professional content shoot without subscription. No strings attached.">Boek een professionele content shoot zonder abonnement. Je zit nergens aan vast.</p>
+    <div class="ie-row fade">
+      <div>
+        <p class="ie-label" data-nl="Altijd inbegrepen" data-en="Always included">Altijd inbegrepen</p>
+        <ul class="ie-list">
+          <li data-nl="Intake gesprek vooraf" data-en="Intake call beforehand">Intake gesprek vooraf</li>
+          <li data-nl="Moodboard en shot list op maat" data-en="Custom moodboard and shot list">Moodboard en shot list op maat</li>
+          <li data-nl="Professionele shoot op locatie" data-en="Professional shoot on location">Professionele shoot op locatie</li>
+          <li data-nl="Bewerking en levering in 9:16 en 4:5" data-en="Editing and delivery in 9:16 and 4:5">Bewerking en levering in 9:16 en 4:5</li>
         </ul>
-        <a href="contact.html?pakket=shoot" class="pkg-cta-btn">Get in touch →</a>
+        <p class="km-note" data-nl="Reiskosten worden berekend op basis van 0,23 euro per kilometer." data-en="Travel costs are calculated at 0.23 euro per kilometre.">Reiskosten worden berekend op basis van 0,23 euro per kilometer.</p>
       </div>
-      <div class="shoot-big-card">
-        <div class="pkg-card-num">Full Shoot</div>
-        <div class="pkg-card-name">FULL.</div>
-        <div class="pkg-card-sub">Volledige contentproductie</div>
-        <div class="pkg-card-price">€850<span class="pkg-pm">eenmalig</span></div>
-        <div class="pkg-card-note">Inclusief content kalender en publicatie</div>
-        <ul class="pkg-card-features">
-          <li>Intake gesprek vooraf</li>
-          <li>Moodboard en shot list op maat</li>
-          <li>Professionele shoot op locatie</li>
-          <li>Bewerking en levering in 9:16 en 4:5</li>
-          <li>Captions en hashtags</li>
-          <li>Content kalender</li>
-          <li>Publicatie op social media</li>
-          <li>35 professioneel bewerkte fotos</li>
-          <li>6 bewerkte Reels tot 60 seconden</li>
+      <div>
+        <p class="ie-label" data-nl="Niet inbegrepen" data-en="Not included">Niet inbegrepen</p>
+        <ul class="ie-list">
+          <li data-nl="Captions en hashtags" data-en="Captions and hashtags">Captions en hashtags</li>
+          <li data-nl="Content kalender" data-en="Content calendar">Content kalender</li>
+          <li data-nl="Publicatie op social media" data-en="Publishing on social media">Publicatie op social media</li>
         </ul>
-        <a href="contact.html?pakket=shoot" class="pkg-cta-btn">Get in touch →</a>
       </div>
     </div>
-    <div class="shoot-addons">
-      <h3>Add-ons</h3>
-      <div class="addons-grid">
-        <div class="addon-item"><strong>Extra Reel</strong><span>€125 per stuk</span></div>
-        <div class="addon-item"><strong>Stories pakket</strong><span>Op aanvraag</span></div>
-        <div class="addon-item"><strong>Extra locatie</strong><span>Op aanvraag</span></div>
+    <div class="shoot-cards fade">
+      <div class="shoot-card">
+        <div class="shoot-label">Instap</div>
+        <div class="shoot-name">Mini Shoot</div>
+        <div class="shoot-price">&#8364; 450</div>
+        <div class="shoot-excl" data-nl="excl. BTW" data-en="Excluding VAT">Exclusief BTW</div>
+        <div class="shoot-duration" data-nl="2 uur op locatie" data-en="2 hours on location">2 uur op locatie</div>
+        <hr class="shoot-div">
+        <ul class="shoot-bullets">
+          <li data-nl="15 professioneel bewerkte fotos" data-en="15 professionally edited photos">15 professioneel bewerkte fotos</li>
+          <li data-nl="3 bewerkte Reels tot 60 seconden" data-en="3 edited Reels up to 60 seconds">3 bewerkte Reels tot 60 seconden</li>
+        </ul>
       </div>
+    <a href="contact.html?pakket=shoot" class="pkg-get-in-touch">Get in touch →</a>
+      <div class="shoot-card">
+        <div class="shoot-label">Uitgebreid</div>
+        <div class="shoot-name">Full Shoot</div>
+        <div class="shoot-price">&#8364; 850</div>
+        <div class="shoot-excl" data-nl="excl. BTW" data-en="Excluding VAT">Exclusief BTW</div>
+        <div class="shoot-duration" data-nl="3 tot 4 uur op locatie" data-en="3 to 4 hours on location">3 tot 4 uur op locatie</div>
+        <hr class="shoot-div">
+        <ul class="shoot-bullets">
+          <li data-nl="35 professioneel bewerkte fotos" data-en="35 professionally edited photos">35 professioneel bewerkte fotos</li>
+          <li data-nl="6 bewerkte Reels tot 60 seconden" data-en="6 edited Reels up to 60 seconds">6 bewerkte Reels tot 60 seconden</li>
+        </ul>
+      </div>
+    <a href="contact.html?pakket=shoot" class="pkg-get-in-touch">Get in touch →</a>
+    </div>
+    <div class="addon-section fade">
+      <p class="addon-label-top" data-nl="Add-ons, voor shoots en pakketten" data-en="Add-ons, for shoots and packages">Add-ons, voor shoots en pakketten</p>
+      <div class="addon-row"><span data-nl="Extra bewerkte foto" data-en="Extra edited photo">Extra bewerkte foto</span><span>&#8364; 15</span></div>
+      <div class="addon-row"><span data-nl="Extra Reel on the set tot 60 seconden" data-en="Extra Reel on the set up to 60 seconds">Extra Reel on the set tot 60 seconden</span><span>&#8364; 125</span></div>
+      <div class="addon-row"><span data-nl="Extra custom Story" data-en="Extra custom Story">Extra custom Story</span><span>&#8364; 20</span></div>
+      <p class="addon-note" data-nl="Add-ons worden vooraf afgesproken en op de shoot dag opgenomen." data-en="Add-ons are agreed in advance and captured on the shoot day.">Add-ons worden vooraf afgesproken en op de shoot dag opgenomen.</p>
     </div>
   </div>
 </section>
