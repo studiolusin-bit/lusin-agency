@@ -743,4 +743,12 @@ document.querySelectorAll(".fade").forEach(el=>obs.observe(el));
 <div class="lightbox" id="lightbox" onclick="this.classList.remove('open')">
   <img id="lightbox-img" src="">
 </div>
+<script>
+window.addEventListener('load', function() {
+  if (window.location.hash) {
+    var el = document.querySelector(window.location.hash);
+    if (el) setTimeout(function() { el.scrollIntoView({behavior:'smooth', block:'start'}); }, 200);
+  }
+});
+</script>
 </body>
