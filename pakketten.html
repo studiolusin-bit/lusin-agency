@@ -661,10 +661,7 @@ const obs = new IntersectionObserver(entries=>{
   entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
 },{threshold:0.1});
 document.querySelectorAll('.fade').forEach(el=>obs.observe(el));
-</script>
 
-
-<script>
 window.setLang = function setLang(lang) {
   document.querySelectorAll(".lang-toggle button").forEach((b,i) => b.classList.toggle("active",(lang==="nl"&&i===0)||(lang==="en"&&i===1)));
   document.querySelectorAll("[data-nl],[data-en]").forEach(el => {
